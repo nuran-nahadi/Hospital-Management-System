@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.LoginController">
+   <children>
+      <AnchorPane prefHeight="483.2" prefWidth="340.0" StackPane.alignment="CENTER" />
+
+      
+                  <AnchorPane layoutX="100.0" layoutY="100.0" prefHeight="483.0" prefWidth="343.0">
+               <children>
+                  <Label fx:id="lblg" layoutX="123.0" layoutY="104.0" prefHeight="44.0" prefWidth="68.0" text="Login">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txusername" layoutX="54.0" layoutY="180.0" prefHeight="26.0" prefWidth="221.0" promptText="Username" />
+                  <PasswordField layoutX="52.0" layoutY="228.0" prefHeight="26.0" prefWidth="222.0" promptText="Password" />
+                  <TextField fx:id="txpassword" layoutX="52.0" layoutY="228.0" prefHeight="26.0" prefWidth="221.0" promptText="Password" />
+                  <CheckBox fx:id="chshowpass" layoutX="54.0" layoutY="269.0" mnemonicParsing="false" text="Show Password" />
+                  <Button fx:id="btlg" layoutX="52.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="222.0" text="Login" />
+                  <Label fx:id="lbhnay" layoutX="52.0" layoutY="355.0" prefHeight="19.0" prefWidth="127.0" text="Have no account yet?">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+                  <Hyperlink fx:id="hpreghere" layoutX="179.0" layoutY="353.0" text="Register Here" />
+               </children>
+            </AnchorPane>
+
+
+   </children>
+</StackPane>
