@@ -1,8 +1,14 @@
 package com.example.hospitalmanagement;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,7 +88,14 @@ public class LoginController {
        passwordText.setVisible(false);
 
 
-
+    }
+    public void SwitchFromLoginformToRegisterform(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Hospital Management System");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

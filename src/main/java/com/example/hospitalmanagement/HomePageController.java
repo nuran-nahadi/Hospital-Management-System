@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -51,7 +50,7 @@ public class HomePageController {
 
     @FXML
    protected void onDoctorbuttonClick(ActionEvent event) throws IOException {
-        System.out.println("hehe");
+
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -62,7 +61,7 @@ public class HomePageController {
 
     @FXML
    protected void onPatientbuttonClick(ActionEvent event) throws IOException {
-        System.out.println("hehe");
+
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -73,7 +72,7 @@ public class HomePageController {
 
     @FXML
   protected   void onRecieptionistbuttonClick(ActionEvent event) throws IOException {
-        System.out.println("hehe");
+
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -84,7 +83,7 @@ public class HomePageController {
 
     @FXML
   protected   void onStaffbuttonClick(ActionEvent event) throws IOException {
-        System.out.println("hehe");
+
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

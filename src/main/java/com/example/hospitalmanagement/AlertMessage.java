@@ -1,6 +1,5 @@
 package com.example.hospitalmanagement;
 
-import com.mysql.cj.x.protobuf.Mysqlx;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
