@@ -2,6 +2,7 @@ package com.example.hospitalmanagement;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,10 +12,8 @@ public class HospitalManagementSystem extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
-       // FXMLLoader fxmlLoader1 =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
-       // Scene scene = new Scene(fxmlLoader.load(),400, 370);
-        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Homepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),1000, 600);
 
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
