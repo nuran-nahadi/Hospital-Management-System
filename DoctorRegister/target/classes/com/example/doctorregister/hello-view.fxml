@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="87.0" layoutY="29.0" prefHeight="63.0" prefWidth="509.0" text="Provide the following information">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="111.0" prefHeight="27.0" prefWidth="102.0" text="User Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="158.0" text="Password">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="201.0" text="Email">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="248.0" text="Phone Number">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="388.0" prefHeight="27.0" prefWidth="129.0" text="Specialization">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="430.0" text="Educational Qualifications">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="319.0" layoutY="108.0" prefHeight="30.0" prefWidth="306.0" promptText="User Name" />
+      <PasswordField layoutX="319.0" layoutY="154.0" prefHeight="30.0" prefWidth="306.0" promptText="Password" />
+      <TextField layoutX="319.0" layoutY="198.0" prefHeight="30.0" prefWidth="306.0" promptText="Email" />
+      <Label layoutX="84.0" layoutY="299.0" prefHeight="27.0" prefWidth="111.0" text="Date of Birth">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="343.0" text="Fee">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="319.0" layoutY="245.0" prefHeight="30.0" prefWidth="306.0" promptText="Phone Number" />
+      <DatePicker layoutX="319.0" layoutY="296.0" prefHeight="30.0" prefWidth="306.0" promptText="Date of birth" />
+      <TextField layoutX="319.0" layoutY="340.0" prefHeight="30.0" prefWidth="306.0" promptText="Your Fee" />
+      <TextField layoutX="319.0" layoutY="385.0" prefHeight="30.0" prefWidth="306.0" promptText="Specialization" />
+      <TextArea layoutX="319.0" layoutY="431.0" prefHeight="109.0" prefWidth="306.0" />
+      <Button layoutX="298.0" layoutY="583.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="102.0" text="REGISTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="497.0" layoutY="638.0" mnemonicParsing="false" text="BACK to the Login Page">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
