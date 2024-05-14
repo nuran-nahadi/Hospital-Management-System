@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.DoctorLoginController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+
+
+        <AnchorPane layoutX="400.0" layoutY="400.0" prefHeight="500.0" prefWidth="330.0" StackPane.alignment="CENTER">
+            <children>
+                <Label fx:id="lblg" layoutX="453.0" layoutY="136.0" prefHeight="44.0" prefWidth="68.0" text="Login">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="DoctorLoginUsername" layoutX="376.0" layoutY="228.0" prefHeight="26.0" prefWidth="221.0" promptText="Username" />
+                <PasswordField fx:id="DoctorPasswordHidden" layoutX="376.0" layoutY="277.0" prefHeight="26.0" prefWidth="222.0" promptText="Password" />
+                <TextField fx:id="passwordText" layoutX="376.0" layoutY="277.0" prefHeight="26.0" prefWidth="222.0" promptText="Password" visible="false" />
+                <CheckBox fx:id="DoctorLogincheckbox" layoutX="373.0" layoutY="320.0" mnemonicParsing="false" onAction="#LoginPasswordShow" prefHeight="18.0" prefWidth="111.0" text="Show Password" />
+                <Button fx:id="Doctorloginbtn" layoutX="369.0" layoutY="360.0" mnemonicParsing="false" onAction="#loginAccount" prefHeight="26.0" prefWidth="222.0" text="Login" />
+                <Label fx:id="lbhnay" layoutX="369.0" layoutY="402.0" prefHeight="19.0" prefWidth="131.0" text="Have no account yet?">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <Hyperlink fx:id="Doctorreg" layoutX="493.0" layoutY="400.0" onAction="#SwitchToRegisterform" text="Register Here" />
+            </children>
+        </AnchorPane>
+
+
+    </children>
+</StackPane>

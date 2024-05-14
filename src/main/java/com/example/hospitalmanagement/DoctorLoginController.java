@@ -5,40 +5,44 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
 
-public class LoginController {
+public class DoctorLoginController {
 
-     @FXML
-        private Button btlg;
+    @FXML
+    private TextField DoctorLoginUsername;
 
-       @FXML
-       private CheckBox checkBox;
+    @FXML
+    private CheckBox DoctorLogincheckbox;
 
-       @FXML
-       private Hyperlink hpreghere;
+    @FXML
+    private PasswordField DoctorPasswordHidden;
 
-       @FXML
-       private Label lbhnay;
+    @FXML
+    private Button Doctorloginbtn;
 
-        @FXML
-       private Label lblg;
+    @FXML
+    private Hyperlink Doctorreg;
 
-       @FXML
-       private TextField passwordText;
+    @FXML
+    private Label lbhnay;
 
-       @FXML
-       private PasswordField passwordhidden;
+    @FXML
+    private Label lblg;
 
-       @FXML
-        private TextField txusername;
+    @FXML
+    private TextField passwordText;
 
     private Connection connect;
     private PreparedStatement prepare;
@@ -47,11 +51,11 @@ public class LoginController {
     private AlertMessage alert = new AlertMessage();
 
     public void loginAccount(){
-        if(txusername.getText().isEmpty() || passwordText.getText().isEmpty()){
+        if(DoctorLoginUsername.getText().isEmpty() || passwordText.getText().isEmpty()){
             alert.errorMessage("Incorrect Username or Password");
         }
         else{
-            String sql = "SELECT * FROM admin WHERE username = ? AND password =?";
+            String sql = "SELECT * FROM doctor WHERE username = ? AND password =?";
             connect =HospitalManagementDatabase.connectDB();
 
             try{
@@ -59,7 +63,7 @@ public class LoginController {
                 if (connect != null) {
                     prepare = connect.prepareStatement(sql);
                 }
-                prepare.setString(1,txusername.getText());
+                prepare.setString(1,DoctorLoginUsername.getText());
                 prepare.setString(2,passwordText.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
@@ -76,20 +80,20 @@ public class LoginController {
     }
 
     public void LoginPasswordShow(){
-       if(checkBox.isSelected()){
-           passwordText.setText(passwordhidden.getText());
-           passwordText.setVisible(true);
-           passwordhidden.setVisible(false);
-           return;
-       }
-       passwordhidden.setText(passwordText.getText());
-       passwordhidden.setVisible(true);
-       passwordText.setVisible(false);
+        if(DoctorLogincheckbox.isSelected()){
+            passwordText.setText(DoctorPasswordHidden.getText());
+            passwordText.setVisible(true);
+            DoctorPasswordHidden.setVisible(false);
+            return;
+        }
+        DoctorPasswordHidden.setText(passwordText.getText());
+        DoctorPasswordHidden.setVisible(true);
+        passwordText.setVisible(false);
 
 
     }
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
-       // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
+        // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorRegistor.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -97,5 +101,6 @@ public class LoginController {
         stage.setScene(scene);
         stage.show();
     }
+
 
 }

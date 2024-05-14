@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomePageController {
+public class HomepageController {
     @FXML
     private Button btadmin;
 
@@ -38,7 +38,6 @@ public class HomePageController {
 
     @FXML
     protected void onAdminbuttonClick(ActionEvent event) throws IOException {
-        System.out.println("hehe");
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -49,7 +48,18 @@ public class HomePageController {
     }
 
     @FXML
-   protected void onDoctorbuttonClick(ActionEvent event) throws IOException {
+    protected void onDoctorbuttonClick(ActionEvent event) throws IOException {
+
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorLogin.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Hospital Management System");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void onPatientbuttonClick(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
@@ -60,7 +70,7 @@ public class HomePageController {
     }
 
     @FXML
-   protected void onPatientbuttonClick(ActionEvent event) throws IOException {
+    protected   void onRecieptionistbuttonClick(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
@@ -71,18 +81,7 @@ public class HomePageController {
     }
 
     @FXML
-  protected   void onRecieptionistbuttonClick(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),400, 370);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Hospital Management System");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-  protected   void onStaffbuttonClick(ActionEvent event) throws IOException {
+    protected   void onStaffbuttonClick(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
@@ -92,3 +91,4 @@ public class HomePageController {
         stage.show();
     }
 }
+
