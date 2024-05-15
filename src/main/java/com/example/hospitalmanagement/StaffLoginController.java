@@ -95,7 +95,7 @@ public class StaffLoginController {
 
     }
     public void switchToStaffHomepage() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StaffHomePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StaffHome.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743,480);
         //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage= new Stage();

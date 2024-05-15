@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.StaffHome">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.StaffHomeController">
    <children>
       <Label layoutX="5.0" layoutY="6.0" prefHeight="26.0" prefWidth="66.0" text="Staff Panel" />
       <Button fx:id="button_logout" layoutX="532.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #d40606;" text="Logout" textAlignment="CENTER" textFill="#f7f7f7" />
