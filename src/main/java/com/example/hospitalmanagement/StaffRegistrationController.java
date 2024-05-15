@@ -25,7 +25,7 @@ public class StaffRegistrationController {
     private TextField RegEmailText;
 
     @FXML
-    private TextField RegFullNametext;
+    private TextField RegFullNameText;
 
     @FXML
     private PasswordField RegPasswordText;
@@ -51,7 +51,7 @@ public class StaffRegistrationController {
 
         LocalDate birthday = RegDateofBirth.getValue();
         String str = birthday.toString();
-        if(RegFullNametext.getText().isEmpty()||RegEmailText.getText().isEmpty() || RegUsernameText.getText().isEmpty()|| RegPasswordText.getText().isEmpty()||RegPnoneNumberText.getText().isEmpty()|| str.isEmpty()){
+        if(RegFullNameText.getText().isEmpty()||RegEmailText.getText().isEmpty() || RegUsernameText.getText().isEmpty()|| RegPasswordText.getText().isEmpty()||RegPnoneNumberText.getText().isEmpty()|| str.isEmpty()){
             alert.errorMessage("Please fill all blank fields");
         }
         else{
@@ -68,7 +68,7 @@ public class StaffRegistrationController {
                     Date date = new Date(0,0,0);
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                     prepare = connect.prepareStatement(insertData);
-                    prepare.setString(1,RegFullNametext.getText());
+                    prepare.setString(1,RegFullNameText.getText());
                     prepare.setString(2,RegUsernameText.getText());
                     prepare.setString(3,RegEmailText.getText());
                     prepare.setString(4,RegPnoneNumberText.getText());
