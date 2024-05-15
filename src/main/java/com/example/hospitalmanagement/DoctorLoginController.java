@@ -52,7 +52,7 @@ public class DoctorLoginController {
 
     public void loginAccount(){
 
-        if(DoctorLoginUsername.getText().isEmpty() || passwordText.getText().isEmpty()){
+        if(DoctorLoginUsername.getText().isEmpty() || DoctorPasswordHidden.getText().isEmpty()){
             alert.errorMessage("Incorrect Username or Password");
         }
         else{
@@ -65,7 +65,7 @@ public class DoctorLoginController {
                     prepare = connect.prepareStatement(sql);
                 }
                 prepare.setString(1,DoctorLoginUsername.getText());
-                prepare.setString(2,passwordText.getText());
+                prepare.setString(2,DoctorPasswordHidden.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
                    // alert.successMessage("Login Successfully");

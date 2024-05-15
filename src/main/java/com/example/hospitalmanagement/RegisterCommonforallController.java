@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
@@ -44,7 +45,8 @@ public class RegisterCommonforallController {
     private AlertMessage alert = new AlertMessage();
 
 
-    public void registerAccount(){
+
+    public void registerAccount(ActionEvent event){
 
         LocalDate birthday = RegDateofBirth.getValue();
         String str = birthday.toString();
