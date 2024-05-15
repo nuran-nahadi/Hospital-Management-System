@@ -50,7 +50,7 @@ public class PatientLoginController {
             alert.errorMessage("Incorrect Username or Password");
         }
         else{
-            String sql = "SELECT * FROM admin WHERE username = ? AND password =?";
+            String sql = "SELECT * FROM patient WHERE username = ? AND password =?";
             connect =HospitalManagementDatabase.connectDB();
 
             try{
@@ -100,7 +100,7 @@ public class PatientLoginController {
 
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
         // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("PatientRegistration.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterPatientPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
