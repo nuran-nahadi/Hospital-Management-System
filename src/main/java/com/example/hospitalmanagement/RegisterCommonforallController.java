@@ -84,7 +84,7 @@ public class RegisterCommonforallController {
     }
 
     public void switchfromregistertologin(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Login.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("AdminLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");

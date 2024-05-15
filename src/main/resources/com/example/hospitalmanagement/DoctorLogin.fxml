@@ -10,29 +10,29 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.DoctorLoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.DoctorLoginController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
 
-
-        <AnchorPane layoutX="400.0" layoutY="400.0" prefHeight="500.0" prefWidth="330.0" StackPane.alignment="CENTER">
+                  
+                          <AnchorPane layoutX="400.0" layoutY="400.0" prefHeight="500.0" prefWidth="330.0" StackPane.alignment="CENTER">
             <children>
-                <Label fx:id="lblg" layoutX="453.0" layoutY="136.0" prefHeight="44.0" prefWidth="68.0" text="Login">
+                <Label fx:id="lblg" layoutX="309.0" layoutY="98.0" prefHeight="44.0" prefWidth="68.0" text="Login">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <TextField fx:id="DoctorLoginUsername" layoutX="376.0" layoutY="228.0" prefHeight="26.0" prefWidth="221.0" promptText="Username" />
-                <PasswordField fx:id="DoctorPasswordHidden" layoutX="376.0" layoutY="277.0" prefHeight="26.0" prefWidth="222.0" promptText="Password" />
-                <TextField fx:id="passwordText" layoutX="376.0" layoutY="277.0" prefHeight="26.0" prefWidth="222.0" promptText="Password" visible="false" />
-                <CheckBox fx:id="DoctorLogincheckbox" layoutX="373.0" layoutY="320.0" mnemonicParsing="false" onAction="#LoginPasswordShow" prefHeight="18.0" prefWidth="111.0" text="Show Password" />
-                <Button fx:id="Doctorloginbtn" layoutX="369.0" layoutY="360.0" mnemonicParsing="false" onAction="#loginAccount" prefHeight="26.0" prefWidth="222.0" text="Login" />
-                <Label fx:id="lbhnay" layoutX="369.0" layoutY="402.0" prefHeight="19.0" prefWidth="131.0" text="Have no account yet?">
+                <TextField fx:id="DoctorLoginUsername" layoutX="232.0" layoutY="174.0" prefHeight="26.0" prefWidth="221.0" promptText="Username" />
+                <PasswordField fx:id="DoctorPasswordHidden" layoutX="232.0" layoutY="227.0" prefHeight="26.0" prefWidth="222.0" promptText="Password" />
+                <TextField fx:id="passwordText" layoutX="232.0" layoutY="227.0" prefHeight="26.0" prefWidth="222.0" promptText="Password" visible="false" />
+                <CheckBox fx:id="DoctorLogincheckbox" layoutX="232.0" layoutY="273.0" mnemonicParsing="false" onAction="#LoginPasswordShow" prefHeight="18.0" prefWidth="111.0" text="Show Password" />
+                <Button fx:id="Doctorloginbtn" layoutX="231.0" layoutY="310.0" mnemonicParsing="false" onAction="#loginAccount" prefHeight="26.0" prefWidth="222.0" text="Login" />
+                <Label fx:id="lbhnay" layoutX="232.0" layoutY="355.0" prefHeight="19.0" prefWidth="131.0" text="Have no account yet?">
                     <font>
                         <Font size="13.0" />
                     </font>
                 </Label>
-                <Hyperlink fx:id="Doctorreg" layoutX="493.0" layoutY="400.0" onAction="#SwitchToRegisterform" text="Register Here" />
+                <Hyperlink fx:id="Doctorreg" layoutX="363.0" layoutY="353.0" onAction="#SwitchToRegisterform" text="Register Here" />
             </children>
         </AnchorPane>
 

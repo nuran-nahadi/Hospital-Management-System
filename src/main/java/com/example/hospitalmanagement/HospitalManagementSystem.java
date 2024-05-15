@@ -13,7 +13,7 @@ public class HospitalManagementSystem extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Homepage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),1000, 600);
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
 
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);

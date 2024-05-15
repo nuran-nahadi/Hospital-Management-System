@@ -12,9 +12,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
 
-public class LoginController {
+public class AdminLoginController {
 
      @FXML
         private Button btlg;
@@ -63,7 +62,8 @@ public class LoginController {
                 prepare.setString(2,passwordText.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
-                    alert.successMessage("Login Successfully");
+                    //alert.successMessage("Login Successfully");
+                    switchToAdminHomepage();
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -88,9 +88,19 @@ public class LoginController {
 
 
     }
+    public void switchToAdminHomepage() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminHomePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),743,480);
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage= new Stage();
+        stage.setTitle("Admin Homepage");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
        // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorRegistor.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorRegistration.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");

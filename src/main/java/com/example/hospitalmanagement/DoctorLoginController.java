@@ -51,6 +51,7 @@ public class DoctorLoginController {
     private AlertMessage alert = new AlertMessage();
 
     public void loginAccount(){
+
         if(DoctorLoginUsername.getText().isEmpty() || passwordText.getText().isEmpty()){
             alert.errorMessage("Incorrect Username or Password");
         }
@@ -67,7 +68,11 @@ public class DoctorLoginController {
                 prepare.setString(2,passwordText.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
-                    alert.successMessage("Login Successfully");
+                   // alert.successMessage("Login Successfully");
+
+                    switchToDoctorHomepage();
+
+
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -77,6 +82,16 @@ public class DoctorLoginController {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void switchToDoctorHomepage() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DoctorHomePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),743,480);
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage= new Stage();
+        stage.setTitle("Doctor Homepage");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void LoginPasswordShow(){
@@ -92,9 +107,9 @@ public class DoctorLoginController {
 
 
     }
+
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
-        // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorRegistor.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorRegistration.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),400, 370);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
