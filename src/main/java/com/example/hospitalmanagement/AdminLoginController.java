@@ -101,7 +101,7 @@ public class AdminLoginController {
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
        // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorRegistration.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);

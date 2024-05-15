@@ -62,7 +62,7 @@ public class HomepageController {
     protected void onPatientbuttonClick(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("AdminLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
@@ -73,7 +73,7 @@ public class HomepageController {
     protected   void onRecieptionistbuttonClick(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("AdminLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
@@ -84,7 +84,7 @@ public class HomepageController {
     protected   void onStaffbuttonClick(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("AdminLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
