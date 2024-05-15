@@ -61,7 +61,7 @@ public class StaffRegistrationController {
                 prepare = connect.prepareStatement(checkUser);
                 result = prepare.executeQuery();
                 if(result.next()){
-                    alert.errorMessage(RegUsernameText.getText()+" is already existed!");
+                    alert.errorMessage(RegUsernameText.getText()+" already exists!");
                 }
                 else{
                     String insertData = "INSERT INTO staff (fullname,username,email,phonenumber,password,date_of_birth,date) VALUES(?,?,?,?,?,?,?)";
