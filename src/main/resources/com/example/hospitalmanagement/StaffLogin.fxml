@@ -17,7 +17,7 @@
 
         <AnchorPane layoutX="400.0" layoutY="400.0" prefHeight="491.0" prefWidth="640.0" StackPane.alignment="CENTER">
             <children>
-                <Label fx:id="lblg" layoutX="247.0" layoutY="150.0" prefHeight="44.0" prefWidth="131.0" text=" Staff Login">
+                <Label fx:id="lblg" layoutX="286.0" layoutY="147.0" prefHeight="44.0" prefWidth="68.0" text="Login">
                     <font>
                         <Font size="24.0" />
                     </font>

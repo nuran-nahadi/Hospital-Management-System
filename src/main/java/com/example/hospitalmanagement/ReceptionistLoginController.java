@@ -13,7 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class PatientLoginController {
+public class ReceptionistLoginController {
 
     @FXML
     private Button btlg;
@@ -50,7 +50,7 @@ public class PatientLoginController {
             alert.errorMessage("Incorrect Username or Password");
         }
         else{
-            String sql = "SELECT * FROM patient WHERE username = ? AND password =?";
+            String sql = "SELECT * FROM receptionist WHERE username = ? AND password =?";
             connect =HospitalManagementDatabase.connectDB();
 
             try{
@@ -63,7 +63,7 @@ public class PatientLoginController {
                 result =prepare.executeQuery();
                 if(result.next()){
                     //alert.successMessage("Login Successfully");
-                    switchToPatientHomepage();
+                    switchToStaffHomepage();
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -88,19 +88,19 @@ public class PatientLoginController {
 
 
     }
-    public void switchToPatientHomepage() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PatientHomePage.fxml"));
+    public void switchToStaffHomepage() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReceptionistHomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743,480);
         //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage= new Stage();
-        stage.setTitle("Patient Homepage");
+        stage.setTitle("Receptionist Homepage");
         stage.setScene(scene);
         stage.show();
     }
 
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
         // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterPatientPage.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterReceptionistPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");

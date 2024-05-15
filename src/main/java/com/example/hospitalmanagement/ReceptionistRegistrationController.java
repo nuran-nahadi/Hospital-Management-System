@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 
 
-public class StaffRegistrationController {
+public class ReceptionistRegistrationController {
     @FXML
     private DatePicker RegDateofBirth;
 
@@ -55,7 +55,7 @@ public class StaffRegistrationController {
             alert.errorMessage("Please fill all blank fields");
         }
         else{
-            String checkUser = "SELECT * FROM staff WHERE username= '" +RegUsernameText.getText()+"'" ;
+            String checkUser = "SELECT * FROM receptionist WHERE username= '" +RegUsernameText.getText()+"'" ;
             connect =HospitalManagementDatabase.connectDB();
             try{
                 prepare = connect.prepareStatement(checkUser);
@@ -64,7 +64,7 @@ public class StaffRegistrationController {
                     alert.errorMessage(RegUsernameText.getText()+" is already existed!");
                 }
                 else{
-                    String insertData = "INSERT INTO staff (fullname,username,email,phonenumber,password,date_of_birth,date) VALUES(?,?,?,?,?,?,?)";
+                    String insertData = "INSERT INTO receptionist (fullname,username,email,phonenumber,password,date_of_birth,date) VALUES(?,?,?,?,?,?,?)";
                     Date date = new Date(0,0,0);
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                     prepare = connect.prepareStatement(insertData);
@@ -88,7 +88,7 @@ public class StaffRegistrationController {
     }
 
     public void switchfromregistertologin(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("StaffLogin.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("ReceptionistLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");

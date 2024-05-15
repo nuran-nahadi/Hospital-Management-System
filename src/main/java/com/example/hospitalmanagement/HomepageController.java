@@ -72,7 +72,7 @@ public class HomepageController {
     @FXML
     protected   void onRecieptionistbuttonClick(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("AdminLogin.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("ReceptionistLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
