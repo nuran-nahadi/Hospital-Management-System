@@ -13,31 +13,31 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class AdminLoginController {
+public class PatientLoginController {
 
-     @FXML
-        private Button btlg;
+    @FXML
+    private Button btlg;
 
-       @FXML
-       private CheckBox checkBox;
+    @FXML
+    private CheckBox checkBox;
 
-       @FXML
-       private Hyperlink hpreghere;
+    @FXML
+    private Hyperlink hpreghere;
 
-       @FXML
-       private Label lbhnay;
+    @FXML
+    private Label lbhnay;
 
-        @FXML
-       private Label lblg;
+    @FXML
+    private Label lblg;
 
-       @FXML
-       private TextField passwordText;
+    @FXML
+    private TextField passwordText;
 
-       @FXML
-       private PasswordField passwordhidden;
+    @FXML
+    private PasswordField passwordhidden;
 
-       @FXML
-        private TextField txusername;
+    @FXML
+    private TextField txusername;
 
     private Connection connect;
     private PreparedStatement prepare;
@@ -63,7 +63,7 @@ public class AdminLoginController {
                 result =prepare.executeQuery();
                 if(result.next()){
                     //alert.successMessage("Login Successfully");
-                    switchToAdminHomepage();
+                    switchToPatientHomepage();
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -76,31 +76,31 @@ public class AdminLoginController {
     }
 
     public void LoginPasswordShow(){
-       if(checkBox.isSelected()){
-           passwordText.setText(passwordhidden.getText());
-           passwordText.setVisible(true);
-           passwordhidden.setVisible(false);
-           return;
-       }
-       passwordhidden.setText(passwordText.getText());
-       passwordhidden.setVisible(true);
-       passwordText.setVisible(false);
+        if(checkBox.isSelected()){
+            passwordText.setText(passwordhidden.getText());
+            passwordText.setVisible(true);
+            passwordhidden.setVisible(false);
+            return;
+        }
+        passwordhidden.setText(passwordText.getText());
+        passwordhidden.setVisible(true);
+        passwordText.setVisible(false);
 
 
     }
-    public void switchToAdminHomepage() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminHomePage.fxml"));
+    public void switchToPatientHomepage() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PatientHomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743,480);
         //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage= new Stage();
-        stage.setTitle("Admin Homepage");
+        stage.setTitle("Patient Homepage");
         stage.setScene(scene);
         stage.show();
     }
 
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
-       // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
-        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterAdminPage.fxml"));
+        // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("PatientRegistration.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
@@ -109,3 +109,4 @@ public class AdminLoginController {
     }
 
 }
+
