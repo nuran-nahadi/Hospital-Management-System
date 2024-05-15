@@ -55,7 +55,6 @@ public class DoctorResigtrationController {
     @FXML
     private TextField DoctorReguserName;
 
-
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
@@ -66,7 +65,7 @@ public class DoctorResigtrationController {
 
 
    public void OnLoginClick(ActionEvent event) throws IOException {
-       FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("AdminLogin.fxml"));
+       FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorLogin.fxml"));
        Scene scene = new Scene(fxmlLoader.load(),400, 370);
        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
        stage.setTitle("Hospital Management System");

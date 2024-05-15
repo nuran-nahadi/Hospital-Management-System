@@ -17,6 +17,11 @@
                 <Font size="27.0" />
             </font>
         </Label>
+      <Label layoutX="77.0" layoutY="130.0" prefHeight="30.0" prefWidth="90.0" text="Full name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
         <Label layoutX="76.0" layoutY="180.0" prefHeight="27.0" prefWidth="102.0" text="User Name">
             <font>
                 <Font name="System Bold" size="18.0" />
@@ -47,6 +52,7 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
+      <TextField fx:id="DoctorFullName" layoutX="319.0" layoutY="130.0" prefHeight="30.0" prefWidth="306.0" promptText="Full Name" />
         <TextField fx:id="DoctorReguserName" layoutX="319.0" layoutY="179.0" prefHeight="30.0" prefWidth="306.0" promptText="User Name" />
         <PasswordField fx:id="DoctorRegPassword" layoutX="319.0" layoutY="234.0" prefHeight="30.0" prefWidth="306.0" promptText="Password" />
         <TextField fx:id="DoctorRegEmail" layoutX="319.0" layoutY="286.0" prefHeight="30.0" prefWidth="306.0" promptText="Email" />
@@ -62,9 +68,9 @@
         </Label>
         <TextField fx:id="DoctorRegPhoneNumber" layoutX="319.0" layoutY="328.0" prefHeight="30.0" prefWidth="306.0" promptText="Phone Number" />
         <DatePicker fx:id="DoctorRegDoB" layoutX="319.0" layoutY="379.0" prefHeight="30.0" prefWidth="306.0" promptText="Date of birth" />
-        <TextField fx:id="DoctorRegAddress" layoutX="319.0" layoutY="551.0" prefHeight="30.0" prefWidth="306.0" promptText="Address" />
         <TextField fx:id="DoctorRegSpecialization" layoutX="319.0" layoutY="439.0" prefHeight="30.0" prefWidth="306.0" promptText="Specialization" />
         <TextArea fx:id="DoctorRegEQ" layoutX="319.0" layoutY="488.0" prefHeight="47.0" prefWidth="306.0" />
+        <TextField fx:id="DoctorRegAddress" layoutX="319.0" layoutY="551.0" prefHeight="30.0" prefWidth="306.0" promptText="Address" />
         <Button fx:id="DoctorRegbt" layoutX="306.0" layoutY="611.0" mnemonicParsing="false" onAction="#OnRegisterButtonClick" prefHeight="36.0" prefWidth="102.0" text="REGISTER">
             <font>
                 <Font size="16.0" />
@@ -72,11 +78,5 @@
         </Button>
       <Label layoutX="306.0" layoutY="660.0" prefHeight="18.0" prefWidth="136.0" text="Already have an account?" />
       <Hyperlink fx:id="DoctorRegLogin" layoutX="442.0" layoutY="657.0" onAction="#OnLoginClick" text="Log in" />
-      <Label layoutX="77.0" layoutY="130.0" prefHeight="30.0" prefWidth="90.0" text="Full name">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="DoctorFullName" layoutX="319.0" layoutY="130.0" prefHeight="30.0" prefWidth="306.0" promptText="Full Name" />
     </children>
 </AnchorPane>
