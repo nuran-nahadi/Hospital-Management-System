@@ -19,7 +19,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Label layoutX="14.0" layoutY="7.0" prefHeight="26.0" prefWidth="75.0" text="Patient Panel" />
+      <Label fx:id="label_patient" layoutX="14.0" layoutY="7.0" prefHeight="26.0" prefWidth="75.0" text="Patient Panel" />
       <Button fx:id="button_logout" layoutX="571.0" layoutY="7.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: #d40606;" text="Logout" textAlignment="CENTER" textFill="#f7f7f7" />
    </children>
 </AnchorPane>
