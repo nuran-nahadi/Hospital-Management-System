@@ -23,6 +23,9 @@ import java.time.LocalDate;
 public class DoctorResigtrationController {
 
     @FXML
+    private TextField DoctorFullName;
+
+    @FXML
     private TextField DoctorRegAddress;
 
     @FXML
@@ -52,6 +55,7 @@ public class DoctorResigtrationController {
     @FXML
     private TextField DoctorReguserName;
 
+
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
@@ -75,7 +79,7 @@ public class DoctorResigtrationController {
    public void OnRegisterButtonClick(ActionEvent event) {
        LocalDate birthday = DoctorRegDoB.getValue();
        String str = birthday.toString();
-       if(DoctorRegEmail.getText().isEmpty() || DoctorReguserName.getText().isEmpty()|| DoctorRegPassword.getText().isEmpty()||DoctorRegPhoneNumber.getText().isEmpty()|| str.isEmpty()||DoctorRegSpecialization.getText().isEmpty()||DoctorRegAddress.getText().isEmpty()||DoctorRegEQ.getText().isEmpty()){
+       if(DoctorFullName.getText().isEmpty() || DoctorRegEmail.getText().isEmpty() || DoctorReguserName.getText().isEmpty()|| DoctorRegPassword.getText().isEmpty()||DoctorRegPhoneNumber.getText().isEmpty()|| str.isEmpty()||DoctorRegSpecialization.getText().isEmpty()||DoctorRegAddress.getText().isEmpty()||DoctorRegEQ.getText().isEmpty()){
            alert.errorMessage("Please fill all blank fields");
        }
        else{
@@ -85,23 +89,24 @@ public class DoctorResigtrationController {
                prepare = connect.prepareStatement(checkUser);
                result = prepare.executeQuery();
                if(result.next()){
-                   alert.errorMessage(DoctorReguserName.getText()+"is already existed!");
+                   alert.errorMessage(DoctorReguserName.getText()+" is already existed!");
                }
                else{
-                   String insertData = "INSERT INTO doctor (username,password,email,phonenumber,date_of_birth,specialization,educational_qualification,address,date) VALUES(?,?,?,?,?,?,?,?,?)";
+                   String insertData = "INSERT INTO doctor (fullname,username,password,email,phonenumber,date_of_birth,specialization,educational_qualification,address,date) VALUES(?,?,?,?,?,?,?,?,?,?)";
                    Date date = new Date(0,0,0);
                    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                    prepare = connect.prepareStatement(insertData);
-                   prepare.setString(1,DoctorReguserName.getText());
-                   prepare.setString(2,DoctorRegPassword.getText());
-                   prepare.setString(3,DoctorRegEmail.getText());
-                   prepare.setString(4,DoctorRegPhoneNumber.getText());
+                   prepare.setString(1,DoctorFullName.getText());
+                   prepare.setString(2,DoctorReguserName.getText());
+                   prepare.setString(3,DoctorRegPassword.getText());
+                   prepare.setString(4,DoctorRegEmail.getText());
+                   prepare.setString(5,DoctorRegPhoneNumber.getText());
 
-                   prepare.setString(5,str);
-                   prepare.setString(6,DoctorRegSpecialization.getText());
-                   prepare.setString(7,DoctorRegEQ.getText());
-                   prepare.setString(8,DoctorRegAddress.getText());
-                   prepare.setString(9,String.valueOf(sqlDate));
+                   prepare.setString(6,str);
+                   prepare.setString(7,DoctorRegSpecialization.getText());
+                   prepare.setString(8,DoctorRegEQ.getText());
+                   prepare.setString(9,DoctorRegAddress.getText());
+                   prepare.setString(10,String.valueOf(sqlDate));
 
                    prepare.executeUpdate();
                    alert.successMessage("Registration Successful!");
