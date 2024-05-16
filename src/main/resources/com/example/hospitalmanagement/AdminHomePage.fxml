@@ -13,7 +13,7 @@
    <children>
       <TabPane layoutY="28.8" prefHeight="451.0" prefWidth="640.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
         <tabs>
-          <Tab fx:id="tab_overview" closable="false" style="-fx-background-color: #191970;" text="Overview">
+          <Tab fx:id="tab_overview" closable="false" text="Overview">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
