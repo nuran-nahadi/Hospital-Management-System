@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class AdminLoginController {
 
@@ -44,9 +46,10 @@ public class AdminLoginController {
     private ResultSet result;
 
     private AlertMessage alert = new AlertMessage();
+  //  private String admintableColumn[]
 
     public void loginAccount(){
-        if(txusername.getText().isEmpty() || passwordText.getText().isEmpty()){
+        if(txusername.getText().isEmpty() || passwordhidden.getText().isEmpty()){
             alert.errorMessage("Incorrect Username or Password");
         }
         else{
@@ -59,10 +62,10 @@ public class AdminLoginController {
                     prepare = connect.prepareStatement(sql);
                 }
                 prepare.setString(1,txusername.getText());
-                prepare.setString(2,passwordText.getText());
+                prepare.setString(2,passwordhidden.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
-                    //alert.successMessage("Login Successfully");
+
                     switchToAdminHomepage();
                 }
                 else{
@@ -88,9 +91,14 @@ public class AdminLoginController {
 
 
     }
-    public void switchToAdminHomepage() throws IOException {
+    public void switchToAdminHomepage() throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminHomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743,480);
+        Parent root = fxmlLoader.load();
+        AdminHomePageController adminHomePageController=fxmlLoader.getController();
+        adminHomePageController.setProfile(txusername.getText(),passwordhidden.getText());
+        adminHomePageController.setTab_overview();
+
+        Scene scene = new Scene(root,743,480);
         //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage= new Stage();
         stage.setTitle("Admin Homepage");
@@ -99,7 +107,7 @@ public class AdminLoginController {
     }
 
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
-       // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
+
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterAdminPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -107,5 +115,10 @@ public class AdminLoginController {
         stage.setScene(scene);
         stage.show();
     }
+
+
+
+
+
 
 }

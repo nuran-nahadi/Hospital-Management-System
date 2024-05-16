@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -68,7 +69,7 @@ public class DoctorLoginController {
                 prepare.setString(2,DoctorPasswordHidden.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
-                   // alert.successMessage("Login Successfully");
+
 
                     switchToDoctorHomepage();
 
@@ -86,7 +87,11 @@ public class DoctorLoginController {
 
     public void switchToDoctorHomepage() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DoctorHomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743,480);
+        Parent root = fxmlLoader.load();
+        DoctorHomepageController doctorHomepageController = fxmlLoader.getController();
+        doctorHomepageController.setProfile(DoctorLoginUsername.getText(),DoctorPasswordHidden.getText());
+        doctorHomepageController.setTab_overview();
+        Scene scene = new Scene(root,743,480);
         //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage= new Stage();
         stage.setTitle("Doctor Homepage");
