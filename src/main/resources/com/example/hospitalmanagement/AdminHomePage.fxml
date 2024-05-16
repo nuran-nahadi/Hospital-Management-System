@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -16,7 +18,7 @@
     <children>
         <TabPane layoutY="28.8" prefHeight="451.0" prefWidth="640.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
             <tabs>
-                <Tab fx:id="tab_overview" closable="false" style="-fx-background-color: TRANSPARENT;" text="Overview">
+                <Tab fx:id="tab_overview" closable="false" text="Overview">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -222,7 +224,16 @@
                                     </font>
                                 </Label>
                                 <TextField fx:id="name" layoutX="296.0" layoutY="73.0" />
-                                <TextField fx:id="username" layoutX="296.0" layoutY="108.0" />
+                                <TextField fx:id="username" disable="true" editable="false" layoutX="296.0" layoutY="108.0">
+                           <opaqueInsets>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </opaqueInsets>
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></TextField>
                                 <TextField fx:id="email" layoutX="296.0" layoutY="147.0" />
                                 <TextField fx:id="phonenumber" layoutX="296.0" layoutY="188.0" />
                                 <TextField fx:id="dob" layoutX="296.0" layoutY="228.0" />
