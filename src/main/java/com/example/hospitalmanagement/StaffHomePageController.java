@@ -68,7 +68,7 @@ public class StaffHomePageController {
                 phoneField.setText(result.getString("phonenumber"));
                 dobField.setText(result.getString("date_of_birth"));
                 addressField.setText(result.getString("address"));
-
+                passwordField.setText(result.getString("password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

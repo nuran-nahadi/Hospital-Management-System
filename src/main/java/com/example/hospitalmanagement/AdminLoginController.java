@@ -94,7 +94,7 @@ public class AdminLoginController {
     public void switchToAdminHomepage(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminHomePage.fxml"));
         Parent root = fxmlLoader.load();
-        AdminHomePageController adminHomePageController=fxmlLoader.getController();
+        AdminHomePageController adminHomePageController = fxmlLoader.getController();
         adminHomePageController.setProfile(txusername.getText(),passwordhidden.getText());
         adminHomePageController.setTab_overview();
 

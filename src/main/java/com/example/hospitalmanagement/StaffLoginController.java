@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class StaffLoginController {
 
@@ -88,9 +90,13 @@ public class StaffLoginController {
 
 
     }
-    public void switchToStaffHomepage(ActionEvent event) throws IOException {
+    public void switchToStaffHomepage(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StaffHomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743,480);
+        Parent root = fxmlLoader.load();
+        StaffHomePageController staffHomePageController = fxmlLoader.getController();
+        staffHomePageController.setProfile(txusername.getText(), passwordhidden.getText());
+
+        Scene scene = new Scene(root,1280,800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         //Stage stage= new Stage();
         stage.setTitle("Staff Homepage");
