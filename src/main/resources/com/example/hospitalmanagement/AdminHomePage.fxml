@@ -22,15 +22,18 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextArea layoutX="233.0" layoutY="81.0" prefHeight="45.0" prefWidth="146.0" />
-                                <TextArea layoutX="414.0" layoutY="81.0" prefHeight="45.0" prefWidth="146.0" />
+                                <TextArea layoutX="447.0" layoutY="81.0" prefHeight="90.0" prefWidth="146.0" />
+                                <TextArea layoutX="245.0" layoutY="83.0" prefHeight="86.0" prefWidth="146.0" />
                                 <Label alignment="CENTER" layoutX="48.0" layoutY="56.0" prefHeight="26.0" prefWidth="147.0" text="Total Patient" />
                                 <TextField fx:id="totalpatientcount" alignment="CENTER" layoutX="48.0" layoutY="83.0" prefHeight="87.0" prefWidth="154.0" text="0">
                                     <font>
                                         <Font size="36.0" />
                                     </font>
                                 </TextField>
-                                <TextField alignment="CENTER" layoutX="265.0" layoutY="211.0" promptText="dkoaoa" />
+                        <Label alignment="CENTER" layoutX="446.0" layoutY="56.0" prefHeight="26.0" prefWidth="147.0" text="Total Staff" />
+                        <Label alignment="CENTER" layoutX="244.0" layoutY="54.0" prefHeight="26.0" prefWidth="147.0" text="Total Doctor" />
+                        <TextArea layoutX="647.0" layoutY="81.0" prefHeight="90.0" prefWidth="146.0" />
+                        <Label alignment="CENTER" layoutX="646.0" layoutY="54.0" prefHeight="26.0" prefWidth="147.0" text="Total Receptionist" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -39,17 +42,17 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="715.0">
                             <children>
-                                <Button layoutX="99.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" text="ADD DOCTOR">
+                                <Button fx:id="btAddDoctor" layoutX="99.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" text="ADD DOCTOR">
                                     <font>
                                         <Font name="System Bold Italic" size="14.0" />
                                     </font>
                                 </Button>
-                                <Button layoutX="637.0" layoutY="38.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="137.0" text="REMOVE DOCTOR">
+                                <Button fx:id="btRemoveDoctor" layoutX="637.0" layoutY="38.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="137.0" text="REMOVE DOCTOR">
                                     <font>
                                         <Font name="System Bold Italic" size="14.0" />
                                     </font>
                                 </Button>
-                                <Button layoutX="358.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="138.0" text="SEARCH DOCTOR">
+                                <Button fx:id="btSearchDoctor" layoutX="358.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="138.0" text="SEARCH DOCTOR">
                                     <font>
                                         <Font name="System Bold Italic" size="14.0" />
                                     </font>
@@ -57,7 +60,7 @@
                                 <AnchorPane layoutX="-5.0" layoutY="454.0" prefHeight="176.0" prefWidth="418.0" />
                                 <AnchorPane layoutX="-2.0" layoutY="124.0" prefHeight="573.0" prefWidth="906.0">
                                     <children>
-                                        <TableView layoutX="1.0" layoutY="23.0" prefHeight="489.0" prefWidth="893.0">
+                                        <TableView layoutX="2.0" layoutY="19.0" prefHeight="198.0" prefWidth="906.0">
                                             <columns>
                                                 <TableColumn prefWidth="105.6000030040741" text="Full Name" />
                                                 <TableColumn prefWidth="106.39996337890625" text="User Name" />
