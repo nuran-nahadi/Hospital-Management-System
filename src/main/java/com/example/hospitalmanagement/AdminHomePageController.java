@@ -1,20 +1,56 @@
 package com.example.hospitalmanagement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class AdminHomePageController {
+public class AdminHomePageController implements Initializable {
 
+    @FXML
+    private TableColumn<Doctor, String> Address;
+
+    @FXML
+    private TableColumn<Doctor, String> DateOfbirth;
+
+    @FXML
+    private TableColumn<Doctor, String> EduQualification;
+
+    @FXML
+    private TableColumn<Doctor, String> Email;
+
+    @FXML
+    private TableColumn<Doctor, String> FullName;
+
+    @FXML
+    private TableColumn<Doctor, String> PhoneNum;
+
+    @FXML
+    private TableColumn<Doctor, String> Specialization;
+
+    @FXML
+    private TableColumn<Doctor, Integer> Status;
+
+    @FXML
+    private TableColumn<Doctor, String> UserName;
 
     @FXML
     private TextField address;
+
+    @FXML
+    private Button btAddDoctor;
+
+    @FXML
+    private Button btRemoveDoctor;
+
+    @FXML
+    private Button btSearchDoctor;
 
     @FXML
     private Button button_logout;
@@ -59,14 +95,17 @@ public class AdminHomePageController {
     private Tab tab_staff;
 
     @FXML
+    private TableView<Doctor> tableview;
+
+    @FXML
     private TextField totalpatientcount;
 
     @FXML
     private TextField username;
 
-    private Connection connect;
-    private PreparedStatement prepare;
-    private ResultSet result;
+    private Connection connect = null;
+    private PreparedStatement prepare = null;
+    private ResultSet result = null;
 
     public int getTotalPatientCount() {
         int totalCount=0;
@@ -98,7 +137,7 @@ public class AdminHomePageController {
                 ex.printStackTrace();
             }
         }
-      return totalCount;
+        return totalCount;
     }
 
 
@@ -106,7 +145,7 @@ public class AdminHomePageController {
     public void setTab_overview() {
         totalpatientcount.setText(String.valueOf(getTotalPatientCount()));
 
-        }
+    }
 
 
     public void setProfile(String user, String pass) throws SQLException {
@@ -146,6 +185,54 @@ public class AdminHomePageController {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // Initialize TableView columns
+        FullName.setCellValueFactory(new PropertyValueFactory<>("FullName"));
+        UserName.setCellValueFactory(new PropertyValueFactory<>("UserName"));
+        Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        PhoneNum.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
+        DateOfbirth.setCellValueFactory(new PropertyValueFactory<>("DateOfBirth"));
+        Specialization.setCellValueFactory(new PropertyValueFactory<>("Specialization"));
+        EduQualification.setCellValueFactory(new PropertyValueFactory<>("EducationalQualification"));
+        Address.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        Status.setCellValueFactory(new PropertyValueFactory<>("Status"));
+
+        // Populate TableView with data
+        try {
+            tableview.setItems(getDoctors());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Doctor> getDoctors() throws SQLException {
+        ObservableList<Doctor> list = FXCollections.observableArrayList();
+        try (Connection connect = HospitalManagementDatabase.connectDB();
+             PreparedStatement ps = connect.prepareStatement("SELECT * FROM doctor");
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                list.add(new Doctor(
+                        rs.getString("fullname"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("phonenumber"),
+                        rs.getString("date_of_birth"),
+                        rs.getString("specialization"),
+                        rs.getString("educationalqualification"),
+                        rs.getString("address"),
+                        rs.getInt("status")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 
+
+
+
+}

@@ -60,16 +60,17 @@
                                 <AnchorPane layoutX="-5.0" layoutY="454.0" prefHeight="176.0" prefWidth="418.0" />
                                 <AnchorPane layoutX="-2.0" layoutY="124.0" prefHeight="573.0" prefWidth="906.0">
                                     <children>
-                                        <TableView layoutX="2.0" layoutY="19.0" prefHeight="198.0" prefWidth="906.0">
+                                        <TableView fx:id="tableview" layoutX="2.0" layoutY="19.0" prefHeight="411.0" prefWidth="953.0">
                                             <columns>
-                                                <TableColumn prefWidth="105.6000030040741" text="Full Name" />
-                                                <TableColumn prefWidth="106.39996337890625" text="User Name" />
-                                                <TableColumn prefWidth="123.19996643066406" text="Email" />
-                                                <TableColumn minWidth="0.0" prefWidth="92.800048828125" text="Phone No." />
-                                                <TableColumn prefWidth="112.0" text="DATE of Birth" />
-                                                <TableColumn prefWidth="116.0" text="Specialization" />
-                                                <TableColumn prefWidth="135.20001220703125" text="Edu. Qualifications" />
-                                                <TableColumn prefWidth="99.20003662109377" text="STATUS" />
+                                                <TableColumn fx:id="FullName" prefWidth="105.6000030040741" text="Full Name" />
+                                                <TableColumn fx:id="UserName" prefWidth="106.39996337890625" text="User Name" />
+                                                <TableColumn fx:id="Email" prefWidth="123.19996643066406" text="Email" />
+                                                <TableColumn fx:id="PhoneNum" minWidth="0.0" prefWidth="92.800048828125" text="Phone No." />
+                                                <TableColumn fx:id="DateOfbirth" prefWidth="112.0" text="DATE of Birth" />
+                                                <TableColumn fx:id="Specialization" prefWidth="116.0" text="Specialization" />
+                                                <TableColumn fx:id="EduQualification" prefWidth="118.39996337890625" text="Edu. Qualifications" />
+                                                <TableColumn fx:id="Address" prefWidth="73.5999755859375" text="Address" />
+                                    <TableColumn fx:id="Status" prefWidth="73.5999755859375" text="Status" />
                                             </columns>
                                         </TableView>
                                     </children>
