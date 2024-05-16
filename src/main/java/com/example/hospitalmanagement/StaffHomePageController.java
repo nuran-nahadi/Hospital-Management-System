@@ -1,8 +1,12 @@
 package com.example.hospitalmanagement;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -83,6 +87,52 @@ public class StaffHomePageController {
             if (connect != null) {
                 connect.close();
             }
+        }
+    }
+    public void initialize() {
+        button_logout.setOnAction(event -> {
+            try {
+                switchToHomePage(event);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    private void switchToHomePage(ActionEvent event) throws  IOException {
+        try {
+            FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Homepage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),743, 480);
+
+            Stage stage = (Stage) button_logout.getScene().getWindow();
+            stage.setTitle("Hospital Management System");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateInfo(ActionEvent event) {
+        try {
+            String insertData = "UPDATE staff SET fullname = ?, username = ?, email = ?, phonenumber = ?, date_of_birth = ?, address = ?, password = ? WHERE username = ?";
+            connect = HospitalManagementDatabase.connectDB();
+            prepare = connect.prepareStatement(insertData);
+            prepare.setString(1, nameField.getText());
+            prepare.setString(2, usernameField.getText());
+            prepare.setString(3, emailField.getText());
+            prepare.setString(4, phoneField.getText());
+            prepare.setString(5, dobField.getText());
+            prepare.setString(6, addressField.getText());
+            prepare.setString(7, passwordField.getText());
+            prepare.setString(8, usernameField.getText());
+
+            prepare.executeUpdate();
+            AlertMessage alert = new AlertMessage();
+            alert.successMessage("Update Successful!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
