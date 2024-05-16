@@ -45,7 +45,7 @@ public class StaffLoginController {
 
     private AlertMessage alert = new AlertMessage();
 
-    public void loginAccount(){
+    public void loginAccount(ActionEvent event){
         if(txusername.getText().isEmpty() || passwordhidden.getText().isEmpty()){
             alert.errorMessage("Incorrect Username or Password");
         }
@@ -63,7 +63,7 @@ public class StaffLoginController {
                 result =prepare.executeQuery();
                 if(result.next()){
                     //alert.successMessage("Login Successfully");
-                    switchToStaffHomepage();
+                    switchToStaffHomepage(event);
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -88,11 +88,11 @@ public class StaffLoginController {
 
 
     }
-    public void switchToStaffHomepage() throws IOException {
+    public void switchToStaffHomepage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StaffHomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743,480);
-        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage stage= new Stage();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //Stage stage= new Stage();
         stage.setTitle("Staff Homepage");
         stage.setScene(scene);
         stage.show();

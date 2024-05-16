@@ -48,7 +48,7 @@ public class AdminLoginController {
     private AlertMessage alert = new AlertMessage();
   //  private String admintableColumn[]
 
-    public void loginAccount(){
+    public void loginAccount(ActionEvent event){
         if(txusername.getText().isEmpty() || passwordhidden.getText().isEmpty()){
             alert.errorMessage("Incorrect Username or Password");
         }
@@ -66,7 +66,7 @@ public class AdminLoginController {
                 result =prepare.executeQuery();
                 if(result.next()){
 
-                    switchToAdminHomepage();
+                    switchToAdminHomepage(event);
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -91,7 +91,7 @@ public class AdminLoginController {
 
 
     }
-    public void switchToAdminHomepage() throws IOException, SQLException {
+    public void switchToAdminHomepage(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminHomePage.fxml"));
         Parent root = fxmlLoader.load();
         AdminHomePageController adminHomePageController=fxmlLoader.getController();
@@ -99,8 +99,8 @@ public class AdminLoginController {
         adminHomePageController.setTab_overview();
 
         Scene scene = new Scene(root,743,480);
-        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage stage= new Stage();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //Stage stage= new Stage();
         stage.setTitle("Admin Homepage");
         stage.setScene(scene);
         stage.show();

@@ -51,7 +51,7 @@ public class DoctorLoginController {
 
     private AlertMessage alert = new AlertMessage();
 
-    public void loginAccount(){
+    public void loginAccount(ActionEvent event){
 
         if(DoctorLoginUsername.getText().isEmpty() || DoctorPasswordHidden.getText().isEmpty()){
             alert.errorMessage("Incorrect Username or Password");
@@ -71,7 +71,7 @@ public class DoctorLoginController {
                 if(result.next()){
 
 
-                    switchToDoctorHomepage();
+                    switchToDoctorHomepage(event);
 
 
                 }
@@ -85,15 +85,15 @@ public class DoctorLoginController {
         }
     }
 
-    public void switchToDoctorHomepage() throws IOException {
+    public void switchToDoctorHomepage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DoctorHomePage.fxml"));
         Parent root = fxmlLoader.load();
         DoctorHomepageController doctorHomepageController = fxmlLoader.getController();
         doctorHomepageController.setProfile(DoctorLoginUsername.getText(),DoctorPasswordHidden.getText());
         doctorHomepageController.setTab_overview();
         Scene scene = new Scene(root,743,480);
-        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage stage= new Stage();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //Stage stage= new Stage();
         stage.setTitle("Doctor Homepage");
         stage.setScene(scene);
         stage.show();

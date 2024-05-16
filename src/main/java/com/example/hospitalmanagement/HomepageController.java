@@ -41,6 +41,7 @@ public class HomepageController {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("AdminLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //Stage stage = new Stage();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();
@@ -86,6 +87,7 @@ public class HomepageController {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("StaffLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //Stage stage = new Stage();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();
