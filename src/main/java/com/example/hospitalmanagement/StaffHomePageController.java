@@ -102,7 +102,7 @@ public class StaffHomePageController {
     private void switchToHomePage(ActionEvent event) throws  IOException {
         try {
             FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Homepage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(),743, 480);
+            Scene scene = new Scene(fxmlLoader.load(),1280, 800);
 
             Stage stage = (Stage) button_logout.getScene().getWindow();
             stage.setTitle("Hospital Management System");

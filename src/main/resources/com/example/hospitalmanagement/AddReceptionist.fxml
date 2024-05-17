@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.AddReceptionist">
+   <children>
+      <TableView fx:id="ReceptionistTableview" layoutY="158.0" prefHeight="642.0" prefWidth="1280.0">
+         <columns>
+            <TableColumn fx:id="receptionistFullName" editable="false" prefWidth="225.60000306367874" text="Full Name" />
+            <TableColumn fx:id="receptionistUserName" editable="false" prefWidth="176.8000030517578" text="User Name" />
+            <TableColumn fx:id="receptionistEmail" editable="false" minWidth="0.0" prefWidth="212.0" text="Email" />
+            <TableColumn fx:id="receptionistPhonenum" editable="false" minWidth="0.0" prefWidth="201.60003662109375" text="Phone No." />
+            <TableColumn fx:id="receptionistDOB" minWidth="4.800048828125" prefWidth="150.39996337890625" text="Date Of Birth" />
+            <TableColumn fx:id="receptionistAddress" editable="false" minWidth="0.0" prefWidth="316.800048828125" text="Address" />
+         </columns>
+      </TableView>
+      <Label prefHeight="62.0" prefWidth="1280.0" style="-fx-background-color: #10acea; -fx-font-family: Helvetica; -fx-font-weight: bold; -fx-border-color: black; -fx-border-width: 5;" text="                                            Receptionist Application List" textFill="#ac4222">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="85.0" prefHeight="54.0" prefWidth="738.0" text="Please Select a Candidate among the Given List for employment:">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="button_logout1" layoutX="1006.0" layoutY="95.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER" textFill="#f7f7f7">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="button_logout" layoutX="1138.0" layoutY="95.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" style="-fx-background-color: #d40606; -fx-border-color: blue; -fx-border-width: 3;" text="Cancel" textAlignment="CENTER" textFill="#f7f7f7">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

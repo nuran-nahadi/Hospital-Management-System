@@ -11,7 +11,7 @@ public class Doctor extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Doctor.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 700, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
