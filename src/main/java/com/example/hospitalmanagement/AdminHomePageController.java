@@ -4,14 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import javax.print.Doc;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminHomePageController implements Initializable {
@@ -33,6 +40,10 @@ public class AdminHomePageController implements Initializable {
 
     @FXML
     private TextField ReceptionistfilterField;
+
+
+    @FXML
+    private Button RemoveReceptionist;
 
     @FXML
     private TableColumn<Staff, String> StaffAddress;
@@ -75,9 +86,18 @@ public class AdminHomePageController implements Initializable {
 
     @FXML
     private Button btAddDoctor;
+    @FXML
+    private Button btAddReceptionist;
+
+    @FXML
+    private Button btAddStaff;
 
     @FXML
     private Button btRemoveDoctor;
+
+    @FXML
+    private Button btRemoveStaff;
+
 
     @FXML
     private Button btSearchDoctor;
@@ -203,6 +223,18 @@ public class AdminHomePageController implements Initializable {
     private PreparedStatement prepare = null;
     private ResultSet result = null;
 
+
+
+    public void onlogOUTClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HospitalManagementSystem.class.getResource("Homepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Hospital Management System");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
     public int getTotalCount(String tablename) {
         int totalCount = 0;
         try {
@@ -321,6 +353,8 @@ public class AdminHomePageController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
 
         //
         patientFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
@@ -546,7 +580,7 @@ public class AdminHomePageController implements Initializable {
         }
         return Receptionistlist;
     }
-
+   
 
 
 }

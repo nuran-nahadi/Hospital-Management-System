@@ -69,9 +69,12 @@ public class DoctorLoginController {
                 prepare.setString(2,DoctorPasswordHidden.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
-
-
-                    switchToDoctorHomepage(event);
+                    if (result.getInt("status")==0){
+                        alert.errorMessage("You are not approved by Admin.Wait to be Approved");
+                    }
+                    else {
+                        switchToDoctorHomepage(event);
+                    }
 
 
                 }

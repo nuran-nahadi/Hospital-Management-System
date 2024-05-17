@@ -78,6 +78,7 @@ public class DoctorResigtrationController {
    public void OnRegisterButtonClick(ActionEvent event) {
        LocalDate birthday = DoctorRegDoB.getValue();
        String str = birthday.toString();
+       int status=0;
        if(DoctorFullName.getText().isEmpty() || DoctorRegEmail.getText().isEmpty() || DoctorReguserName.getText().isEmpty()|| DoctorRegPassword.getText().isEmpty()||DoctorRegPhoneNumber.getText().isEmpty()|| str.isEmpty()||DoctorRegSpecialization.getText().isEmpty()||DoctorRegAddress.getText().isEmpty()||DoctorRegEQ.getText().isEmpty()){
            alert.errorMessage("Please fill all blank fields");
        }
@@ -91,7 +92,7 @@ public class DoctorResigtrationController {
                    alert.errorMessage(DoctorReguserName.getText()+" is already existed!");
                }
                else{
-                   String insertData = "INSERT INTO doctor (fullname,username,password,email,phonenumber,date_of_birth,specialization,educational_qualification,address,date) VALUES(?,?,?,?,?,?,?,?,?,?)";
+                   String insertData = "INSERT INTO doctor (fullname,username,password,email,phonenumber,date_of_birth,specialization,educationalqualification,address,date,status) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
                    Date date = new Date(0,0,0);
                    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                    prepare = connect.prepareStatement(insertData);
@@ -106,9 +107,10 @@ public class DoctorResigtrationController {
                    prepare.setString(8,DoctorRegEQ.getText());
                    prepare.setString(9,DoctorRegAddress.getText());
                    prepare.setString(10,String.valueOf(sqlDate));
+                   prepare.setString(11, String.valueOf(status));
 
                    prepare.executeUpdate();
-                   alert.successMessage("Registration Successful!");
+                   alert.successMessage("Registration Successful! Wait to be Approved by Admin.");
 
                }
            }

@@ -35,7 +35,7 @@
             </tabs>
         </TabPane>
         <AnchorPane layoutX="13.0" layoutY="200.0" minHeight="0.0" minWidth="0.0" prefHeight="321.0" prefWidth="554.0" />
-        <Button layoutX="541.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: red;" text="Log Out">
+        <Button fx:id="button_logout" layoutX="541.0" layoutY="24.0" mnemonicParsing="false" onAction="#onlogOUTClick" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: red;" text="Log Out">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
