@@ -2,11 +2,14 @@ package com.example.hospitalmanagement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.print.Doc;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -17,10 +20,19 @@ public class AdminHomePageController implements Initializable {
     private TableView<Doctor> DoctorTableview;
 
     @FXML
+    private TextField DoctorfilterField;
+
+    @FXML
     private TableView<Patient> PatientTableview;
 
     @FXML
+    private TextField PatientfilterField;
+
+    @FXML
     private TableView<Receptionist> ReceptionistTableview;
+
+    @FXML
+    private TextField ReceptionistfilterField;
 
     @FXML
     private TableColumn<Staff, String> StaffAddress;
@@ -45,6 +57,9 @@ public class AdminHomePageController implements Initializable {
 
     @FXML
     private TableColumn<Staff, String> StaffUserName;
+
+    @FXML
+    private TextField StafffilterField;
 
     @FXML
     private TextField TotalDoctorCount;
@@ -275,7 +290,34 @@ public class AdminHomePageController implements Initializable {
 
         // Populate Doctor TableView with data
         try {
-            DoctorTableview.setItems(getDoctors());
+          ObservableList<Doctor> Dlist;
+          Dlist =getDoctors();
+            FilteredList<Doctor> filteredData = new FilteredList<>(Dlist, b -> true);
+            DoctorfilterField.textProperty().addListener((observable,oldValue,newValue)->{
+                filteredData.setPredicate(Doctor->{
+                    if(newValue==null || newValue.isEmpty()){
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if(Doctor.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Doctor.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Doctor.getSpecialization().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                });
+
+            });
+            SortedList<Doctor> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(DoctorTableview.comparatorProperty());
+            DoctorTableview.setItems(sortedData);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -291,7 +333,33 @@ public class AdminHomePageController implements Initializable {
         patientDoctorName.setCellValueFactory(new PropertyValueFactory<>("address"));
 
         try{
-            PatientTableview.setItems(getPatients());
+            ObservableList<Patient> Plist=getPatients();
+            FilteredList<Patient> filteredData = new FilteredList<>(Plist, b -> true);
+            PatientfilterField.textProperty().addListener((observable,oldValue,newValue)->{
+                filteredData.setPredicate(Patient->{
+                    if(newValue==null || newValue.isEmpty()){
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if(Patient.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Patient.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Patient.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                });
+
+            });
+            SortedList<Patient> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(PatientTableview.comparatorProperty());
+            PatientTableview.setItems(sortedData);
+
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -309,7 +377,32 @@ public class AdminHomePageController implements Initializable {
 
         // Populate Staff TableView with data
         try {
-            StaffTableview.setItems(getStaffs());
+            ObservableList<Staff> Slist=getStaffs();
+            FilteredList<Staff> filteredData = new FilteredList<>(Slist, b -> true);
+            StafffilterField.textProperty().addListener((observable,oldValue,newValue)->{
+                filteredData.setPredicate(Staff->{
+                    if(newValue==null || newValue.isEmpty()){
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if(Staff.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Staff.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Staff.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                });
+
+            });
+            SortedList<Staff> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(StaffTableview.comparatorProperty());
+            StaffTableview.setItems(sortedData);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -325,7 +418,32 @@ public class AdminHomePageController implements Initializable {
 
         // Populate Staff TableView with data
         try {
-            ReceptionistTableview.setItems(getReceptionists());
+            ObservableList<Receptionist> Rlist=getReceptionists();
+            FilteredList<Receptionist> filteredData = new FilteredList<>(Rlist, b -> true);
+            ReceptionistfilterField.textProperty().addListener((observable,oldValue,newValue)->{
+                filteredData.setPredicate(Receptionist->{
+                    if(newValue==null || newValue.isEmpty()){
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if(Receptionist.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Receptionist.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Receptionist.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                });
+
+            });
+            SortedList<Receptionist> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(ReceptionistTableview.comparatorProperty());
+            ReceptionistTableview.setItems(sortedData);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -355,6 +473,7 @@ public class AdminHomePageController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return list;
     }
 
