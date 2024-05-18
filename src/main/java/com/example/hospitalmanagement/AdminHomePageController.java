@@ -562,7 +562,7 @@ public class AdminHomePageController implements Initializable {
     public ObservableList<Doctor> getDoctors() throws SQLException {
         ObservableList<Doctor> list = FXCollections.observableArrayList();
         try (Connection connect = HospitalManagementDatabase.connectDB();
-             PreparedStatement ps = connect.prepareStatement("SELECT * FROM doctor");
+             PreparedStatement ps = connect.prepareStatement("SELECT * FROM doctor WHERE status = 1");
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 list.add(new Doctor(
@@ -614,7 +614,7 @@ public class AdminHomePageController implements Initializable {
     public ObservableList<Staff> getStaffs() throws SQLException {
         ObservableList<Staff> Stafflist = FXCollections.observableArrayList();
         try (Connection connect = HospitalManagementDatabase.connectDB();
-             PreparedStatement ps = connect.prepareStatement("SELECT * FROM staff");
+             PreparedStatement ps = connect.prepareStatement("SELECT * FROM staff WHERE status = 1");
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Stafflist.add(new Staff(
