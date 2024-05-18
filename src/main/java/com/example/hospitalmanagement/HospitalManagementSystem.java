@@ -15,7 +15,7 @@ public class HospitalManagementSystem extends Application {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Homepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
 
-        stage.setTitle("Hospital Management  System");
+        stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();
     }
