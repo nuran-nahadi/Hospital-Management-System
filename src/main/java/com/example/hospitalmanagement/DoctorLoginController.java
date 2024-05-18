@@ -127,4 +127,17 @@ public class DoctorLoginController {
     }
 
 
+    @FXML
+    private Button Go_Back ;
+    public void SwitchToMainHomePage(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("HomePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Hospital Management System");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
 }
