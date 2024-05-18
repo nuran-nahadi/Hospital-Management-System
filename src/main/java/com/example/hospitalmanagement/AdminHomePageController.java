@@ -222,6 +222,7 @@ public class AdminHomePageController implements Initializable {
     private Connection connect = null;
     private PreparedStatement prepare = null;
     private ResultSet result = null;
+    AlertMessage alert= new AlertMessage();
 
 
 
@@ -317,8 +318,8 @@ public class AdminHomePageController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+
+    public void updateDoctorTable()throws SQLException{
         // Initialize Doctor TableView columns
         doctorFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         doctorUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
@@ -329,11 +330,52 @@ public class AdminHomePageController implements Initializable {
         doctorEduQualification.setCellValueFactory(new PropertyValueFactory<>("educationalQualification"));
         doctorAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         doctorStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        SearchDoctor();
 
-        // Populate Doctor TableView with data
+
+    }
+
+    public  void updatePatientTable()throws SQLException{
+        patientFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        patientUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        patientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        patientphonenum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        patientDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+        patientDisease.setCellValueFactory(new PropertyValueFactory<>("disease"));
+        patientDoctorName.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        patientDoctorName.setCellValueFactory(new PropertyValueFactory<>("address"));
+
+        SearchPatient();
+    }
+
+
+    public void updateStaffTable()throws SQLException{
+        StaffFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        StaffUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        StaffEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        StaffPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        StaffDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+        StaffAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        StaffStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        SearchStaff();
+    }
+
+    public void updateReceptionistTable()throws SQLException{
+        receptionistFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        receptionistUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        receptionistEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        receptionistPhonenum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        receptionistDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+        receptionistAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        receptionistStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        SearchReceptionist();
+    }
+
+    public  void SearchDoctor(){
         try {
-          ObservableList<Doctor> Dlist;
-          Dlist =getDoctors();
+            ObservableList<Doctor> Dlist;
+            Dlist =getDoctors();
             FilteredList<Doctor> filteredData = new FilteredList<>(Dlist, b -> true);
             DoctorfilterField.textProperty().addListener((observable,oldValue,newValue)->{
                 filteredData.setPredicate(Doctor->{
@@ -365,132 +407,139 @@ public class AdminHomePageController implements Initializable {
         }
 
 
+    }
 
-        //
-        patientFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        patientUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-        patientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        patientphonenum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        patientDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-        patientDisease.setCellValueFactory(new PropertyValueFactory<>("disease"));
-        patientDoctorName.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
-        patientDoctorName.setCellValueFactory(new PropertyValueFactory<>("address"));
+   public  void SearchPatient(){
+       try{
+           ObservableList<Patient> Plist=getPatients();
+           FilteredList<Patient> filteredData = new FilteredList<>(Plist, b -> true);
+           PatientfilterField.textProperty().addListener((observable,oldValue,newValue)->{
+               filteredData.setPredicate(Patient->{
+                   if(newValue==null || newValue.isEmpty()){
+                       return true;
+                   }
+                   String lowerCaseFilter = newValue.toLowerCase();
+                   if(Patient.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                       return true;
+                   }
+                   else if(Patient.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                       return true;
+                   }
+                   else if(Patient.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                       return true;
+                   }
+                   else{
+                       return false;
+                   }
+               });
 
-        try{
-            ObservableList<Patient> Plist=getPatients();
-            FilteredList<Patient> filteredData = new FilteredList<>(Plist, b -> true);
-            PatientfilterField.textProperty().addListener((observable,oldValue,newValue)->{
-                filteredData.setPredicate(Patient->{
-                    if(newValue==null || newValue.isEmpty()){
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    if(Patient.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else if(Patient.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else if(Patient.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
-                });
+           });
+           SortedList<Patient> sortedData = new SortedList<>(filteredData);
+           sortedData.comparatorProperty().bind(PatientTableview.comparatorProperty());
+           PatientTableview.setItems(sortedData);
 
-            });
-            SortedList<Patient> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(PatientTableview.comparatorProperty());
-            PatientTableview.setItems(sortedData);
+       }
+       catch (SQLException e){
+           e.printStackTrace();
+       }
 
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
+   }
+
+   public void SearchStaff()throws SQLException{
+       try {
+           ObservableList<Staff> Slist=getStaffs();
+           FilteredList<Staff> filteredData = new FilteredList<>(Slist, b -> true);
+           StafffilterField.textProperty().addListener((observable,oldValue,newValue)->{
+               filteredData.setPredicate(Staff->{
+                   if(newValue==null || newValue.isEmpty()){
+                       return true;
+                   }
+                   String lowerCaseFilter = newValue.toLowerCase();
+                   if(Staff.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                       return true;
+                   }
+                   else if(Staff.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                       return true;
+                   }
+                   else if(Staff.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                       return true;
+                   }
+                   else{
+                       return false;
+                   }
+               });
+
+           });
+           SortedList<Staff> sortedData = new SortedList<>(filteredData);
+           sortedData.comparatorProperty().bind(StaffTableview.comparatorProperty());
+           StaffTableview.setItems(sortedData);
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
 
 
-        // Initialize Staff TableView columns
-        StaffFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        StaffUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-        StaffEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        StaffPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        StaffDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-        StaffAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        StaffStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+   }
 
-        // Populate Staff TableView with data
+   public void SearchReceptionist()throws SQLException{
+      try{
+          ObservableList<Receptionist> Rlist=getReceptionists();
+       FilteredList<Receptionist> filteredData = new FilteredList<>(Rlist, b -> true);
+       ReceptionistfilterField.textProperty().addListener((observable,oldValue,newValue)->{
+           filteredData.setPredicate(Receptionist->{
+               if(newValue==null || newValue.isEmpty()){
+                   return true;
+               }
+               String lowerCaseFilter = newValue.toLowerCase();
+               if(Receptionist.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                   return true;
+               }
+               else if(Receptionist.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                   return true;
+               }
+               else if(Receptionist.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                   return true;
+               }
+               else{
+                   return false;
+               }
+           });
+
+       });
+       SortedList<Receptionist> sortedData = new SortedList<>(filteredData);
+       sortedData.comparatorProperty().bind(ReceptionistTableview.comparatorProperty());
+       ReceptionistTableview.setItems(sortedData);
+   } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+}
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
         try {
-            ObservableList<Staff> Slist=getStaffs();
-            FilteredList<Staff> filteredData = new FilteredList<>(Slist, b -> true);
-            StafffilterField.textProperty().addListener((observable,oldValue,newValue)->{
-                filteredData.setPredicate(Staff->{
-                    if(newValue==null || newValue.isEmpty()){
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    if(Staff.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else if(Staff.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else if(Staff.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
-                });
-
-            });
-            SortedList<Staff> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(StaffTableview.comparatorProperty());
-            StaffTableview.setItems(sortedData);
+            updateDoctorTable();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
-        // Initialize Receptionist TableView columns
-        receptionistFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        receptionistUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-        receptionistEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        receptionistPhonenum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        receptionistDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-        receptionistAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        receptionistStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        // Populate Staff TableView with data
         try {
-            ObservableList<Receptionist> Rlist=getReceptionists();
-            FilteredList<Receptionist> filteredData = new FilteredList<>(Rlist, b -> true);
-            ReceptionistfilterField.textProperty().addListener((observable,oldValue,newValue)->{
-                filteredData.setPredicate(Receptionist->{
-                    if(newValue==null || newValue.isEmpty()){
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    if(Receptionist.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else if(Receptionist.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else if(Receptionist.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
-                });
-
-            });
-            SortedList<Receptionist> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(ReceptionistTableview.comparatorProperty());
-            ReceptionistTableview.setItems(sortedData);
+            updatePatientTable();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+        try {
+            updateStaffTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            updateReceptionistTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
     }
@@ -589,6 +638,61 @@ public class AdminHomePageController implements Initializable {
             e.printStackTrace();
         }
         return Receptionistlist;
+    }
+
+
+    public void removeDoctor(){
+        connect =HospitalManagementDatabase.connectDB();
+        Doctor doctor =DoctorTableview.getSelectionModel().getSelectedItem();
+        String sql ="DELETE FROM doctor WHERE username= ?";
+
+        try{
+            prepare =connect.prepareStatement(sql);
+            prepare.setString(1,doctor.getUserName());
+            prepare.executeUpdate();
+            alert.successMessage("Removed");
+            updateDoctorTable();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void removeStaff(){
+        connect =HospitalManagementDatabase.connectDB();
+        Staff staff =StaffTableview.getSelectionModel().getSelectedItem();
+        String sql ="DELETE FROM staff WHERE username= ?";
+
+        try{
+            prepare =connect.prepareStatement(sql);
+            prepare.setString(1,staff.getUserName());
+            prepare.executeUpdate();
+            alert.successMessage("Removed");
+            updateStaffTable();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void removeReceptionist(){
+        connect =HospitalManagementDatabase.connectDB();
+        Receptionist receptionist =ReceptionistTableview.getSelectionModel().getSelectedItem();
+        String sql ="DELETE FROM receptionist WHERE username= ?";
+
+        try{
+            prepare =connect.prepareStatement(sql);
+            prepare.setString(1,receptionist.getUserName());
+            prepare.executeUpdate();
+            alert.successMessage("Removed");
+            updateReceptionistTable();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
    
 

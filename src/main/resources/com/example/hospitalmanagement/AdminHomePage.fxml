@@ -58,7 +58,7 @@
                                         <Font name="System Bold Italic" size="14.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="btRemoveDoctor" layoutX="608.0" layoutY="56.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="137.0" text="REMOVE DOCTOR">
+                                <Button fx:id="btRemoveDoctor" layoutX="608.0" layoutY="56.0" mnemonicParsing="false" onAction="#removeDoctor" prefHeight="40.0" prefWidth="137.0" text="REMOVE DOCTOR">
                                     <font>
                                         <Font name="System Bold Italic" size="14.0" />
                                     </font>
@@ -125,7 +125,7 @@
                                         <Font name="System Bold Italic" size="17.0" />
                                     </font>
                                 </Button>
-                                <Button layoutX="675.0" layoutY="37.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="150.0" text="REMOVE STAFF">
+                                <Button layoutX="675.0" layoutY="37.0" mnemonicParsing="false" onAction="#removeStaff" prefHeight="47.0" prefWidth="150.0" text="REMOVE STAFF">
                                     <font>
                                         <Font name="System Bold Italic" size="17.0" />
                                     </font>
@@ -194,7 +194,7 @@
                                         <Font name="System Bold Italic" size="16.0" />
                                     </font>
                                 </Button>
-                                <Button layoutX="599.0" layoutY="31.0" mnemonicParsing="false" text="REMOVE RECEPTIONIST">
+                                <Button layoutX="599.0" layoutY="31.0" mnemonicParsing="false" onAction="#removeReceptionist" text="REMOVE RECEPTIONIST">
                                     <font>
                                         <Font name="System Bold Italic" size="16.0" />
                                     </font>

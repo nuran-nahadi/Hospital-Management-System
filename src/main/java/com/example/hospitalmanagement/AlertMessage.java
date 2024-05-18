@@ -6,7 +6,10 @@ import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
 public class AlertMessage {
+
     private Alert alert;
+
+
 
     public void errorMessage(String message) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -38,4 +41,6 @@ public class AlertMessage {
         }
 
     }
+
+
 }
