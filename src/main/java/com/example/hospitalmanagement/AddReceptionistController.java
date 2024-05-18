@@ -93,5 +93,21 @@ public class AddReceptionistController implements Initializable {
 
         return list;
     }
+
+    public void addReceptionist(){
+        try {
+            Receptionist receptionist = ReceptionistTableview.getSelectionModel().getSelectedItem();
+            if (receptionist == null) {
+                return;
+            }
+            Connection connect = HospitalManagementDatabase.connectDB();
+            PreparedStatement ps = connect.prepareStatement("UPDATE receptionist SET status = 1 WHERE username = ?");
+            ps.setString(1, receptionist.getUserName());
+            ps.executeUpdate();
+            updateReceptionistTable();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

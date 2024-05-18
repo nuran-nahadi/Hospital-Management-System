@@ -103,7 +103,13 @@ public class AdminHomePageController implements Initializable {
     private Button btSearchDoctor;
 
     @FXML
+    private Button button_add;
+
+    @FXML
     private Button button_logout;
+
+    @FXML
+    private Button button_remove;
 
     @FXML
     private TextField dob;
@@ -286,6 +292,15 @@ public class AdminHomePageController implements Initializable {
         stage.show();
     }
 
+    public void gotoAddReceptionist(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(HospitalManagementSystem.class.getResource("AddReceptionist.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Receptionist Queue");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void setProfile(String user, String pass) throws SQLException {
         try {
             connect = HospitalManagementDatabase.connectDB();
@@ -331,7 +346,7 @@ public class AdminHomePageController implements Initializable {
         doctorSpecialization.setCellValueFactory(new PropertyValueFactory<>("specialization"));
         doctorEduQualification.setCellValueFactory(new PropertyValueFactory<>("educationalQualification"));
         doctorAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        doctorStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
         SearchDoctor();
 
 
@@ -358,7 +373,6 @@ public class AdminHomePageController implements Initializable {
         StaffPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         StaffDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
         StaffAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        StaffStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         SearchStaff();
     }
 
@@ -369,7 +383,6 @@ public class AdminHomePageController implements Initializable {
         receptionistPhonenum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         receptionistDOB.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
         receptionistAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        receptionistStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         SearchReceptionist();
     }
@@ -623,7 +636,7 @@ public class AdminHomePageController implements Initializable {
     public ObservableList<Receptionist> getReceptionists() throws SQLException {
         ObservableList<Receptionist> Receptionistlist = FXCollections.observableArrayList();
         try (Connection connect = HospitalManagementDatabase.connectDB();
-             PreparedStatement ps = connect.prepareStatement("SELECT * FROM receptionist");
+             PreparedStatement ps = connect.prepareStatement("SELECT * FROM receptionist where status = 1");
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Receptionistlist.add(new Receptionist(

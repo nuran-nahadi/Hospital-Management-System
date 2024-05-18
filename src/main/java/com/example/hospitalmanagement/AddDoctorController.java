@@ -51,7 +51,13 @@ public class AddDoctorController implements Initializable {
     @FXML
     private TableColumn<Doctor, String> dUserName;
 
-public void updateDoctorTable()throws SQLException {
+
+    private Connection connect = null;
+    private PreparedStatement prepare = null;
+    private ResultSet result = null;
+    AlertMessage alert = new AlertMessage();
+
+    public void updateDoctorTable()throws SQLException {
 
     dFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
     dUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
@@ -105,6 +111,24 @@ public void updateDoctorTable()throws SQLException {
         return list;
     }
 
+    public void addDoctor() {
+        connect = HospitalManagementDatabase.connectDB();
+        Doctor doctor = DoctorTableview.getSelectionModel().getSelectedItem();
+        String sql = "UPDATE doctor SET status = ? WHERE username= ?";
+
+        try{
+            prepare =connect.prepareStatement(sql);
+            prepare.setString(1,"1");
+            prepare.setString(2,doctor.getUserName());
+            prepare.executeUpdate();
+            alert.successMessage("Added Successfully");
+            updateDoctorTable();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }
 
