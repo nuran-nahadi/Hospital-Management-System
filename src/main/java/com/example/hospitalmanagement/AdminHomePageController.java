@@ -275,10 +275,12 @@ public class AdminHomePageController implements Initializable {
     }
 
     @FXML
-    public void gotoAddDoctor(ActionEvent event) throws IOException {
+    public void gotoAddDoctor(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(HospitalManagementSystem.class.getResource("AddDoctor.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //AddDoctorController add = fxmlLoader.getController();
+        //add.updateTable();
         stage.setTitle("Doctor Queue");
         stage.setScene(scene);
         stage.show();

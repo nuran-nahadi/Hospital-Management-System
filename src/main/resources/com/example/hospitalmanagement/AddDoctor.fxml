@@ -14,7 +14,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="101.0" prefHeight="54.0" prefWidth="738.0" text="Please Select a Candidate among the Given List for employment:">
+      <Label layoutX="21.0" layoutY="101.0" prefHeight="54.0" prefWidth="731.0" text="Please Select a Candidate among the Given List for employment:">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -26,17 +26,17 @@
       </Button>
       <TableView fx:id="DoctorTableview" layoutY="167.0" prefHeight="634.0" prefWidth="1280.0">
          <columns>
-            <TableColumn fx:id="doctorFullName" editable="false" prefWidth="175.99999696016312" text="Full Name" />
-            <TableColumn fx:id="doctorUserName" editable="false" prefWidth="117.60002136230469" text="User Name" />
-            <TableColumn fx:id="doctorEmail" editable="false" prefWidth="159.20001220703125" text="Email" />
-            <TableColumn fx:id="doctorPhoneNum" editable="false" minWidth="0.0" prefWidth="148.0" text="Phone No." />
-            <TableColumn fx:id="doctorDateOfbirth" editable="false" prefWidth="124.800048828125" text="Date of Birth" />
-            <TableColumn fx:id="doctorSpecialization" editable="false" prefWidth="147.199951171875" text="Specialization" />
-            <TableColumn fx:id="doctorEduQualification" editable="false" prefWidth="212.800048828125" text="Edu. Qualifications" />
-            <TableColumn fx:id="doctorAddress" editable="false" prefWidth="200.79986572265625" text="Address" />
+            <TableColumn fx:id="dFullName" editable="false" prefWidth="175.99999696016312" text="Full Name" />
+            <TableColumn fx:id="dUserName" editable="false" prefWidth="117.60002136230469" text="User Name" />
+            <TableColumn fx:id="dEmail" editable="false" prefWidth="159.20001220703125" text="Email" />
+            <TableColumn fx:id="dPhoneNum" editable="false" minWidth="0.0" prefWidth="148.0" text="Phone No." />
+            <TableColumn fx:id="dDateOfbirth" editable="false" prefWidth="124.800048828125" text="Date of Birth" />
+            <TableColumn fx:id="dSpecialization" editable="false" prefWidth="147.199951171875" text="Specialization" />
+            <TableColumn fx:id="dEduQualification" editable="false" prefWidth="212.800048828125" text="Edu. Qualifications" />
+            <TableColumn fx:id="dAddress" editable="false" prefWidth="200.79986572265625" text="Address" />
          </columns>
       </TableView>
-      <Button fx:id="button_add" layoutX="994.0" layoutY="107.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER" textFill="#f7f7f7">
+      <Button fx:id="button_add" layoutX="1011.0" layoutY="107.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER" textFill="#f7f7f7">
          <font>
             <Font size="18.0" />
          </font>
