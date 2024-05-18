@@ -107,6 +107,38 @@ public class ReceptionistHomePageController implements Initializable {
 
 
 
+    public int getTotalCount(String tablename) {
+        int totalCount = 0;
+        try {
+            connect = HospitalManagementDatabase.connectDB();
+            prepare = connect.prepareStatement("SELECT COUNT(*) AS total FROM " + tablename);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                totalCount = result.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (result != null) {
+                    result.close();
+                }
+                if (prepare != null) {
+                    prepare.close();
+                }
+                if (connect != null) {
+                    connect.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return totalCount;
+    }
+
+
 
     public  void SearchDoctor() {
         try {
@@ -345,15 +377,17 @@ public class ReceptionistHomePageController implements Initializable {
        String doctorUsername=doctor.getUserName();
        Patient patient =AddPatientTable.getSelectionModel().getSelectedItem();
        String patienUsername =patient.getUserName();
+       int totrows=getTotalCount("doctorappointment");
       // System.out.println(doctorUsername);
        //System.out.println(patienUsername);
        connect =HospitalManagementDatabase.connectDB();
-       String query = "insert into doctorappointment(doctorusername,patientusername)values(?,?)";
+       String query = "insert into doctorappointment(serialno,doctorusername,patientusername)values(?,?,?)";
 
        try{
            prepare =connect.prepareStatement(query);
-           prepare.setString(1,doctorUsername);
-           prepare.setString(2,patienUsername);
+           prepare.setInt(1,(totrows+1));
+           prepare.setString(2,doctorUsername);
+           prepare.setString(3,patienUsername);
            prepare.execute();
            alert.successMessage("Appointment successful");
 
