@@ -100,23 +100,22 @@
                                         <TableColumn fx:id="doctorFullName" prefWidth="75.0" text="Full Name" />
                                         <TableColumn fx:id="doctorUserName" prefWidth="75.0" text="User Name" />
                                         <TableColumn fx:id="doctorEmail" prefWidth="75.0" text="Email" />
-                                        <TableColumn fx:id="doctorPhoneNum" prefWidth="75.0" text="Phone Number" />
-                                        <TableColumn fx:id="doctorDateOfbirth" prefWidth="75.0" text="DATE of Birth" />
-                                        <TableColumn fx:id="doctorSpecialization" prefWidth="92.0" text="Specialization" />
-                                        <TableColumn fx:id="doctorEduQualification" prefWidth="135.99996948242188" text="Edu. Qualifications" />
-                                        <TableColumn fx:id="doctorAddress" prefWidth="92.79998779296875" text="Address" />
+                                        <TableColumn fx:id="doctorPhoneNum" prefWidth="91.99998474121094" text="Phone Number" />
+                                        <TableColumn fx:id="doctorDateOfbirth" prefWidth="88.79998779296875" text="DATE of Birth" />
+                                        <TableColumn fx:id="doctorSpecialization" prefWidth="95.99993896484375" text="Specialization" />
+                                        <TableColumn fx:id="doctorEduQualification" prefWidth="121.5999755859375" text="Edu. Qualifications" />
+                                        <TableColumn fx:id="doctorAddress" prefWidth="75.199951171875" text="Address" />
                                         <TableColumn fx:id="doctorStatus" prefWidth="99.199951171875" text="Status" />
                                     </columns>
                                 </TableView>
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Patient Report" />
             </tabs>
         </TabPane>
-        <Button fx:id="button_logout" layoutX="671.0" layoutY="23.0" mnemonicParsing="false" onAction="#onlogOUTClick" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: red;" text="Log Out">
+        <Button fx:id="button_logout" layoutX="666.0" layoutY="14.0" mnemonicParsing="false" onAction="#onlogOUTClick" prefHeight="34.0" prefWidth="111.0" style="-fx-background-color: red;" text="Log Out">
             <font>
-                <Font name="System Bold" size="13.0" />
+                <Font name="System Bold" size="21.0" />
             </font>
         </Button>
     </children>

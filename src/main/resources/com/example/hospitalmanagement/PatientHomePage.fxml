@@ -4,22 +4,105 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.PatientHomePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.PatientHomePageController">
     <children>
-        <TabPane layoutX="14.0" layoutY="36.0" prefHeight="444.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
-            <tabs>
-                <Tab fx:id="tab_profile" text="Profile" />
-                <Tab fx:id="tab_appointment" text="Appointments" />
-                <Tab fx:id="tab_record" text="Medical Record">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
-        <Label fx:id="label_patient" layoutX="14.0" layoutY="7.0" prefHeight="26.0" prefWidth="75.0" text="Patient Panel" />
-        <Button fx:id="button_logout" layoutX="571.0" layoutY="7.0" mnemonicParsing="false" onAction="#onlogOUTClick" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: #d40606;" text="Logout" textAlignment="CENTER" textFill="#f7f7f7" />
+        <Label fx:id="label_patient" layoutX="14.0" layoutY="7.0" prefHeight="34.0" prefWidth="133.0" text="Patient Panel">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+        <Button fx:id="button_logout" layoutX="543.0" layoutY="7.0" mnemonicParsing="false" onAction="#onlogOUTClick" prefHeight="37.0" prefWidth="82.0" style="-fx-background-color: #d40606;" text="Logout" textAlignment="CENTER" textFill="#f7f7f7">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TabPane layoutY="50.0" prefHeight="556.0" prefWidth="658.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Profile">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="437.0" prefWidth="658.0">
+                     <children>
+                        <Label layoutX="38.0" layoutY="25.0" text="Full Name">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="37.0" layoutY="69.0" text="User Name">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="36.0" layoutY="119.0" text="Password">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="167.0" text="Email">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="36.0" layoutY="262.0" prefHeight="28.0" prefWidth="78.0" text="Address">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="36.0" layoutY="213.0" text="Phone Number">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="357.0" prefHeight="28.0" prefWidth="134.0" text="Disease">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nameField" layoutX="179.0" layoutY="26.0" prefHeight="26.0" prefWidth="372.0" />
+                        <TextField fx:id="usernameField" disable="true" layoutX="179.0" layoutY="70.0" prefHeight="26.0" prefWidth="373.0" />
+                        <TextField fx:id="passwordField" layoutX="179.0" layoutY="120.0" prefHeight="26.0" prefWidth="372.0" />
+                        <TextField fx:id="phoneField" layoutX="179.0" layoutY="214.0" prefHeight="26.0" prefWidth="371.0" />
+                        <TextField fx:id="emailField" layoutX="179.0" layoutY="168.0" prefHeight="26.0" prefWidth="371.0" />
+                        <TextField fx:id="addressField" layoutX="179.0" layoutY="263.0" prefHeight="26.0" prefWidth="369.0" />
+                        <TextField fx:id="diseaseField" layoutX="179.0" layoutY="358.0" prefHeight="26.0" prefWidth="370.0" />
+                        <Button fx:id="button_Update" layoutX="474.0" layoutY="451.0" mnemonicParsing="false" onAction="#updateInfo" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #191970;" text="Update Info" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="36.0" layoutY="308.0" prefHeight="28.0" prefWidth="78.0" text="Age">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="ageField" layoutX="179.0" layoutY="309.0" prefHeight="26.0" prefWidth="90.0" />
+                        <Label layoutX="277.0" layoutY="309.0" prefHeight="28.0" prefWidth="59.0" text="Years">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="374.0" layoutY="308.0" prefHeight="28.0" prefWidth="66.0" text="Gender">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="genderField" layoutX="449.0" layoutY="310.0" prefHeight="26.0" prefWidth="99.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Appoinments">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="159.0" prefWidth="440.0" />
+            </content>
+          </Tab>
+            <Tab text="Medical Record">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
     </children>
 </AnchorPane>
