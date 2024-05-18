@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.AddDoctor">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.AddDoctorController">
    <children>
       <Label prefHeight="62.0" prefWidth="1280.0" style="-fx-background-color: #10acea; -fx-font-family: Helvetica; -fx-font-weight: bold; -fx-border-color: black; -fx-border-width: 5;" text="                                                 Doctor Application List" textFill="#ac4222" AnchorPane.leftAnchor="0.0">
          <font>
@@ -20,7 +19,7 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="button_logout" layoutX="1137.0" layoutY="108.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" style="-fx-background-color: #d40606; -fx-border-color: blue; -fx-border-width: 3;" text="Cancel" textAlignment="CENTER" textFill="#f7f7f7">
+      <Button fx:id="button_cancel" layoutX="1137.0" layoutY="108.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" style="-fx-background-color: #d40606; -fx-border-color: blue; -fx-border-width: 3;" text="Cancel" textAlignment="CENTER" textFill="#f7f7f7">
          <font>
             <Font size="18.0" />
          </font>
@@ -37,7 +36,7 @@
             <TableColumn fx:id="doctorAddress" editable="false" prefWidth="200.79986572265625" text="Address" />
          </columns>
       </TableView>
-      <Button fx:id="button_logout1" layoutX="994.0" layoutY="107.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER" textFill="#f7f7f7">
+      <Button fx:id="button_add" layoutX="994.0" layoutY="107.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER" textFill="#f7f7f7">
          <font>
             <Font size="18.0" />
          </font>

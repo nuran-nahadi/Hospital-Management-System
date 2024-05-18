@@ -53,7 +53,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="715.0">
                             <children>
-                                <Button fx:id="btAddDoctor" layoutX="396.0" layoutY="58.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" text="ADD DOCTOR">
+                                <Button fx:id="btAddDoctor" layoutX="396.0" layoutY="58.0" mnemonicParsing="false" onAction="#gotoAddDoctor" prefHeight="36.0" prefWidth="125.0" text="ADD DOCTOR">
                                     <font>
                                         <Font name="System Bold Italic" size="14.0" />
                                     </font>

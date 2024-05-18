@@ -273,6 +273,16 @@ public class AdminHomePageController implements Initializable {
         TotalReceptionistCount.setText(String.valueOf(getTotalCount("receptionist")));
     }
 
+    @FXML
+    public void gotoAddDoctor(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HospitalManagementSystem.class.getResource("AddDoctor.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Doctor Queue");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void setProfile(String user, String pass) throws SQLException {
         try {
             connect = HospitalManagementDatabase.connectDB();
