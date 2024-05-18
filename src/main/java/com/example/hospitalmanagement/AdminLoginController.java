@@ -98,9 +98,10 @@ public class AdminLoginController {
         adminHomePageController.setProfile(txusername.getText(),passwordhidden.getText());
         adminHomePageController.setTab_overview();
 
-        Scene scene = new Scene(root,1280,800);
+        Scene scene = new Scene(root,1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //Stage stage= new Stage();
+        stage.setX(100);
+        stage.setY(0);
         stage.setTitle("Admin Homepage");
         stage.setScene(scene);
         stage.show();
@@ -109,8 +110,10 @@ public class AdminLoginController {
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterAdminPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(100);
+        stage.setY(0);
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();
@@ -122,8 +125,10 @@ public class AdminLoginController {
     private Button Go_Back ;
     public void SwitchToMainHomePage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("HomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(100);
+        stage.setY(0);
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();

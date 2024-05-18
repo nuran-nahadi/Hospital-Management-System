@@ -5,41 +5,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="525.0" prefWidth="743.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.HomepageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.HomepageController">
       <children>
-         <Button fx:id="btadmin" layoutX="29.0" layoutY="192.0" mnemonicParsing="false" onAction="#onAdminbuttonClick" style="-fx-background-color: #191970;" text="Admin" textFill="ALICEBLUE">
+         <Button fx:id="btadmin" layoutX="554.0" layoutY="239.0" mnemonicParsing="false" onAction="#onAdminbuttonClick" prefHeight="74.0" prefWidth="172.0" style="-fx-background-color: #191970;" text="Admin" textFill="ALICEBLUE">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btdoctor" layoutX="115.0" layoutY="192.0" mnemonicParsing="false" onAction="#onDoctorbuttonClick" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #191970;" text="Doctor" textFill="ALICEBLUE">
+         <Button fx:id="btdoctor" layoutX="554.0" layoutY="333.0" mnemonicParsing="false" onAction="#onDoctorbuttonClick" prefHeight="74.0" prefWidth="172.0" style="-fx-background-color: #191970;" text="Doctor" textFill="ALICEBLUE">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btpatient" layoutX="264.0" layoutY="192.0" mnemonicParsing="false" onAction="#onPatientbuttonClick" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #191970;" text="Patient" textFill="ALICEBLUE">
+         <Button fx:id="btpatient" layoutX="554.0" layoutY="427.0" mnemonicParsing="false" onAction="#onPatientbuttonClick" prefHeight="74.0" prefWidth="172.0" style="-fx-background-color: #191970;" text="Patient" textFill="ALICEBLUE">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btreceiptionist" layoutX="416.0" layoutY="192.0" mnemonicParsing="false" onAction="#onRecieptionistbuttonClick" style="-fx-background-color: #191970;" text="Recieptionist" textFill="ALICEBLUE">
+         <Button fx:id="btreceiptionist" layoutX="554.0" layoutY="517.0" mnemonicParsing="false" onAction="#onRecieptionistbuttonClick" prefHeight="74.0" prefWidth="172.0" style="-fx-background-color: #191970;" text="Receptionist" textFill="ALICEBLUE">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btgnstaff" layoutX="557.0" layoutY="192.0" mnemonicParsing="false" onAction="#onStaffbuttonClick" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #191970;" text="Staff" textFill="ALICEBLUE">
+         <Button fx:id="btgnstaff" layoutX="554.0" layoutY="602.0" mnemonicParsing="false" onAction="#onStaffbuttonClick" prefHeight="74.0" prefWidth="172.0" style="-fx-background-color: #191970;" text="Staff" textFill="ALICEBLUE">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label fx:id="wltxt" layoutX="29.0" layoutY="113.0" prefHeight="46.0" prefWidth="298.0" text="Welcome to ABC Hospital">
+         <Label fx:id="lgtx" layoutX="592.0" layoutY="168.0" prefHeight="38.0" prefWidth="98.0" text="Login as:">
             <font>
                <Font size="24.0" />
             </font>
          </Label>
-         <Label fx:id="lgtx" layoutX="29.0" layoutY="160.0" prefHeight="27.0" prefWidth="79.0" text="Login as:">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Label>
+      <Button focusTraversable="false" layoutX="1.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="1280.0" text="Welcome to ABC Hospital">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
       </children></AnchorPane>

@@ -52,7 +52,7 @@ public class ReceptionistLoginController {
             alert.errorMessage("Incorrect Username or Password");
         }
         else{
-            String sql = "SELECT * FROM receptionist WHERE username = ? AND password =?";
+            String sql = "SELECT * FROM receptionist WHERE username = ? AND password =? AND status = 1";
             connect =HospitalManagementDatabase.connectDB();
 
             try{
@@ -65,7 +65,10 @@ public class ReceptionistLoginController {
                 result =prepare.executeQuery();
                 if(result.next()){
                     //alert.successMessage("Login Successfully");
-                    switchToReceptionistHomepage(event);
+                    if(result.getInt("status")==0)
+                        alert.errorMessage("Please wait for approval from Admin");
+                    else
+                        switchToReceptionistHomepage(event);
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -107,7 +110,7 @@ public class ReceptionistLoginController {
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
         // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterReceptionistPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),720, 600);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
@@ -120,7 +123,7 @@ public class ReceptionistLoginController {
     private Button Go_Back ;
     public void SwitchToMainHomePage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("HomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);

@@ -71,7 +71,7 @@ public class DoctorLoginController {
                 result =prepare.executeQuery();
                 if(result.next()){
                     if (result.getInt("status")==0){
-                        alert.errorMessage("You are not approved by Admin.Wait to be Approved");
+                        alert.errorMessage("Please wait for approval from Admin");
                     }
                     else {
                         switchToDoctorHomepage(event);
@@ -95,9 +95,8 @@ public class DoctorLoginController {
         DoctorHomepageController doctorHomepageController = fxmlLoader.getController();
         doctorHomepageController.setProfile(DoctorLoginUsername.getText(),DoctorPasswordHidden.getText());
         doctorHomepageController.setTab_overview();
-        Scene scene = new Scene(root,743,480);
+        Scene scene = new Scene(root,1280,800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //Stage stage= new Stage();
         stage.setTitle("Doctor Homepage");
         stage.setScene(scene);
         stage.show();
@@ -131,8 +130,10 @@ public class DoctorLoginController {
     private Button Go_Back ;
     public void SwitchToMainHomePage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("HomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(100);
+        stage.setY(0);
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();

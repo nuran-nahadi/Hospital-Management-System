@@ -53,10 +53,9 @@ public class StaffLoginController {
         }
         else{
             String sql = "SELECT * FROM staff WHERE username = ? AND password =?";
-            connect =HospitalManagementDatabase.connectDB();
+            connect = HospitalManagementDatabase.connectDB();
 
             try{
-                //assert connect != null;
                 if (connect != null) {
                     prepare = connect.prepareStatement(sql);
                 }
@@ -64,8 +63,11 @@ public class StaffLoginController {
                 prepare.setString(2,passwordhidden.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
-                    //alert.successMessage("Login Successfully");
-                    switchToStaffHomepage(event);
+                    if (result.getInt("status") == 0){
+                        alert.errorMessage("Please wait for approval from Admin");
+                    }
+                    else
+                        switchToStaffHomepage(event);
                 }
                 else{
                     alert.errorMessage("Incorrect Username or Password");
@@ -107,7 +109,7 @@ public class StaffLoginController {
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
         // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterStaffPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
@@ -120,7 +122,7 @@ public class StaffLoginController {
     private Button Go_Back ;
     public void SwitchToMainHomePage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("HomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);

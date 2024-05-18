@@ -19,7 +19,7 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="button_logout1" layoutX="1015.0" layoutY="105.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER" textFill="#f7f7f7">
+      <Button fx:id="button_logout1" layoutX="1015.0" layoutY="105.0" mnemonicParsing="false" onAction="#addStaff" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER" textFill="#f7f7f7">
          <font>
             <Font size="18.0" />
          </font>
@@ -31,13 +31,12 @@
       </Button>
       <TableView fx:id="StaffTableview" layoutX="-1.0" layoutY="165.0" prefHeight="636.0" prefWidth="1280.0">
          <columns>
-            <TableColumn fx:id="StaffFullName" editable="false" prefWidth="167.99999696016312" text="Full Name" />
-            <TableColumn fx:id="StaffUserName" editable="false" prefWidth="134.40000915527344" text="User Name" />
-            <TableColumn fx:id="StaffEmail" editable="false" prefWidth="148.79998779296875" text="Email" />
-            <TableColumn fx:id="StaffPhoneNumber" editable="false" prefWidth="165.60003662109375" text="Phone Number" />
-            <TableColumn fx:id="StaffDOB" editable="false" prefWidth="167.199951171875" text="Date of Birth" />
-            <TableColumn fx:id="StaffAddress" editable="false" prefWidth="313.5999755859375" text="Address" />
-            <TableColumn fx:id="StaffStatus" prefWidth="180.800048828125" text="Shift" />
+            <TableColumn fx:id="StaffFullName" editable="false" prefWidth="197.60000306367874" text="Full Name" />
+            <TableColumn fx:id="StaffUserName" editable="false" prefWidth="140.8000030517578" text="User Name" />
+            <TableColumn fx:id="StaffEmail" editable="false" prefWidth="198.39999389648438" text="Email" />
+            <TableColumn fx:id="StaffPhoneNumber" editable="false" prefWidth="171.99993896484375" text="Phone Number" />
+            <TableColumn fx:id="StaffDOB" editable="false" prefWidth="147.99993896484375" text="Date of Birth" />
+            <TableColumn fx:id="StaffAddress" editable="false" prefWidth="426.39996337890625" text="Address" />
          </columns>
       </TableView>
    </children>

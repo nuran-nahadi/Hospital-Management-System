@@ -77,7 +77,7 @@ public class StaffRegistrationController {
                     prepare.setString(7,String.valueOf(sqlDate));
 
                     prepare.executeUpdate();
-                    alert.successMessage("Registration Successful!");
+                    alert.successMessage("Registration Successful! Wait for confirmation from Admin!");
 
                 }
             }

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -103,8 +104,9 @@ public class StaffHomePageController {
         try {
             FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("Homepage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),1280, 800);
-
             Stage stage = (Stage) button_logout.getScene().getWindow();
+            stage.setX(100);
+            stage.setY(0);
             stage.setTitle("Hospital Management System");
             stage.setScene(scene);
             stage.show();

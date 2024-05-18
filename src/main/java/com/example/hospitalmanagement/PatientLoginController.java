@@ -56,7 +56,6 @@ public class PatientLoginController {
             connect =HospitalManagementDatabase.connectDB();
 
             try{
-                //assert connect != null;
                 if (connect != null) {
                     prepare = connect.prepareStatement(sql);
                 }
@@ -64,7 +63,7 @@ public class PatientLoginController {
                 prepare.setString(2,passwordhidden.getText());
                 result =prepare.executeQuery();
                 if(result.next()){
-                    //alert.successMessage("Login Successfully");
+
                     switchToPatientHomepage(event);
                 }
                 else{
@@ -107,7 +106,7 @@ public class PatientLoginController {
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
         // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterPatientPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),743, 680);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
@@ -120,8 +119,10 @@ public class PatientLoginController {
     private Button Go_Back ;
     public void SwitchToMainHomePage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("HomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(100);
+        stage.setY(0);
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();
