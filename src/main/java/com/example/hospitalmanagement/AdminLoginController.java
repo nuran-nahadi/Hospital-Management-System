@@ -98,7 +98,7 @@ public class AdminLoginController {
         adminHomePageController.setProfile(txusername.getText(),passwordhidden.getText());
         adminHomePageController.setTab_overview();
 
-        Scene scene = new Scene(root,743,480);
+        Scene scene = new Scene(root,1280,800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         //Stage stage= new Stage();
         stage.setTitle("Admin Homepage");

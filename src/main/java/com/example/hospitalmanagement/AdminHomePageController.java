@@ -284,9 +284,8 @@ public class AdminHomePageController implements Initializable {
     public void gotoAddDoctor(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(HospitalManagementSystem.class.getResource("AddDoctor.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //AddDoctorController add = fxmlLoader.getController();
-        //add.updateTable();
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
         stage.setTitle("Doctor Queue");
         stage.setScene(scene);
         stage.show();
@@ -295,7 +294,8 @@ public class AdminHomePageController implements Initializable {
     public void gotoAddReceptionist(ActionEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(HospitalManagementSystem.class.getResource("AddReceptionist.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
         stage.setTitle("Receptionist Queue");
         stage.setScene(scene);
         stage.show();
@@ -317,7 +317,7 @@ public class AdminHomePageController implements Initializable {
                 dob.setText(result.getString("date_of_birth"));
                 address.setText(result.getString("address"));
                 gender.setText(result.getString("gender"));
-                //religion.setText(result.getString("religion"));
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -2,12 +2,16 @@ package com.example.hospitalmanagement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -52,10 +56,30 @@ public class AddDoctorController implements Initializable {
     private TableColumn<Doctor, String> dUserName;
 
 
+
     private Connection connect = null;
     private PreparedStatement prepare = null;
     private ResultSet result = null;
     AlertMessage alert = new AlertMessage();
+
+    @FXML
+    public void gotoHome(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to close this window");
+        //alert.setContentText("");
+
+        if (alert.showAndWait().get().equals(ButtonType.OK)) {
+            stage.close();
+        } else {
+            alert.close();
+
+        }
+    }
+
+
 
     public void updateDoctorTable()throws SQLException {
 
@@ -68,12 +92,13 @@ public class AddDoctorController implements Initializable {
     dEduQualification.setCellValueFactory(new PropertyValueFactory<>("educationalQualification"));
     dAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
 
-    try {
-        DoctorTableview.setItems(getDoctors());
-    } catch (SQLException e) {
-        e.printStackTrace();
+        try {
+            DoctorTableview.setItems(getDoctors());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-}
+
 
 
     @Override

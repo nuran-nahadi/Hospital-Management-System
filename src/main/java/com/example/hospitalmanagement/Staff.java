@@ -8,6 +8,7 @@ public class Staff {
     private String phoneNumber;
     private String dateOfBirth;
     private String address;
+    private String shift;
     private int status;
 
     // Constructor
@@ -68,6 +69,10 @@ public class Staff {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setShift(String shift) {
+        this.shift = shift;
     }
 
     public int getStatus() {

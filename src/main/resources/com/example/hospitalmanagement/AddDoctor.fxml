@@ -19,7 +19,7 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="button_cancel" layoutX="1137.0" layoutY="108.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" style="-fx-background-color: #d40606; -fx-border-color: blue; -fx-border-width: 3;" text="Cancel" textAlignment="CENTER" textFill="#f7f7f7">
+      <Button fx:id="button_cancel" layoutX="1137.0" layoutY="108.0" mnemonicParsing="false" onAction="#gotoHome" prefHeight="39.0" prefWidth="114.0" style="-fx-background-color: #d40606; -fx-border-color: blue; -fx-border-width: 3;" text="Cancel" textAlignment="CENTER" textFill="#f7f7f7">
          <font>
             <Font size="18.0" />
          </font>
