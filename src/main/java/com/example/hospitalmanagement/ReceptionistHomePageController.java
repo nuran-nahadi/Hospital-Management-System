@@ -109,6 +109,92 @@ public class ReceptionistHomePageController implements Initializable {
     }
 
     @FXML
+    private TextField addressField;
+
+    @FXML
+    private Button button_Update;
+
+    @FXML
+    private TextField dobField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField passwordField;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private TextField usernameField;
+
+    private Connection connect;
+    private PreparedStatement prepare;
+    private ResultSet result;
+
+
+    public void setProfile(String user, String pass) throws SQLException {
+        try {
+            connect = HospitalManagementDatabase.connectDB();
+            prepare = connect.prepareStatement("SELECT * FROM receptionist WHERE username = ? AND password = ?");
+            prepare.setString(1, user);
+            prepare.setString(2, pass);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+
+                nameField.setText(result.getString("fullname"));
+                usernameField.setText(result.getString("username"));
+                emailField.setText(result.getString("email"));
+                phoneField.setText(result.getString("phonenumber"));
+                dobField.setText(result.getString("date_of_birth"));
+                addressField.setText(result.getString("address"));
+                passwordField.setText(result.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            if (result != null) {
+                result.close();
+            }
+            if (prepare != null) {
+                prepare.close();
+            }
+            if (connect != null) {
+                connect.close();
+            }
+        }
+    }
+
+    public void updateInfo(ActionEvent event) {
+        try {
+            String insertData = "UPDATE receptionist SET fullname = ?, username = ?, email = ?, phonenumber = ?, date_of_birth = ?, address = ?, password = ? WHERE username = ?";
+            connect = HospitalManagementDatabase.connectDB();
+            prepare = connect.prepareStatement(insertData);
+            prepare.setString(1, nameField.getText());
+            prepare.setString(2, usernameField.getText());
+            prepare.setString(3, emailField.getText());
+            prepare.setString(4, phoneField.getText());
+            prepare.setString(5, dobField.getText());
+            prepare.setString(6, addressField.getText());
+            prepare.setString(7, passwordField.getText());
+            prepare.setString(8, usernameField.getText());
+
+            prepare.executeUpdate();
+            AlertMessage alert = new AlertMessage();
+            alert.successMessage("Update Successful!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private Button button_logout;
 
     @FXML

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -20,7 +21,56 @@
             <tabs>
                 <Tab text="Profile">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="81.0" layoutY="49.0" text="Full Name">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="80.0" layoutY="144.0" text="Password">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="80.0" layoutY="93.0" text="User Name">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="81.0" layoutY="192.0" text="Email">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="82.0" layoutY="234.0" text="Phone Number">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="82.0" layoutY="272.0" prefHeight="41.0" prefWidth="81.0" text="Address">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nameField" layoutX="228.0" layoutY="51.0" prefHeight="26.0" prefWidth="379.0" />
+                        <TextField fx:id="usernameField" disable="true" layoutX="228.0" layoutY="94.0" prefHeight="26.0" prefWidth="379.0" />
+                        <TextField fx:id="passwordField" layoutX="228.0" layoutY="145.0" prefHeight="26.0" prefWidth="379.0" />
+                        <TextField fx:id="emailField" layoutX="228.0" layoutY="193.0" prefHeight="26.0" prefWidth="379.0" />
+                        <TextField fx:id="phoneField" layoutX="228.0" layoutY="235.0" prefHeight="26.0" prefWidth="379.0" />
+                        <TextField fx:id="addressField" layoutX="228.0" layoutY="279.0" prefHeight="26.0" prefWidth="379.0" />
+                        <Button fx:id="button_Update" layoutX="547.0" layoutY="402.0" mnemonicParsing="false" onAction="#updateInfo" prefHeight="60.0" prefWidth="210.0" style="-fx-background-color: #191970;" text="Update Info" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="82.0" layoutY="314.0" prefHeight="42.0" prefWidth="106.0" text="Date of Birth">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="dobField" layoutX="228.0" layoutY="322.0" prefHeight="26.0" prefWidth="379.0" />
+                     </children></AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="Add  Patient">
