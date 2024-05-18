@@ -12,7 +12,7 @@ public class Doctor {
  private   String Address;
  private  int Status;
 
-    public Doctor(String userName, String fullName, String password, String email, String phoneNumber, String dateOfBirth, String specialization, String educationalQualification,String Address,int Status) {
+    public Doctor(String fullName, String userName, String password, String email, String phoneNumber, String dateOfBirth, String specialization, String educationalQualification,String Address,int Status) {
         this.UserName = userName;
         this.FullName = fullName;
         this.Password = password;

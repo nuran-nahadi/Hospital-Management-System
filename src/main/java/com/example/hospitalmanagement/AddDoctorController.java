@@ -9,13 +9,13 @@ import javafx.scene.control.TextField;
 public class AddDoctorController {
 
     @FXML
-    private TableColumn<?, ?> Address;
+    private TableColumn<Doctor, String> Address;
 
     @FXML
     private TableColumn<?, ?> DateOfbirth;
 
     @FXML
-    private TableView<?> DoctorTableview;
+    private TableView<Doctor> DoctorTableview;
 
     @FXML
     private TableColumn<?, ?> EduQualification;
@@ -39,10 +39,15 @@ public class AddDoctorController {
     private Button button_cancel;
 
     @FXML
-    private TableColumn<?, ?> doctorFullName;
+    private TableColumn<?, ?> FullName;
 
     @FXML
     private TextField getUsernameField;
+
+
+
+
+
 
 }
 
