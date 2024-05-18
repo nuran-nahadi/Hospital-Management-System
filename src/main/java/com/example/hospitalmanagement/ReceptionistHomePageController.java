@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,6 +26,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ReceptionistHomePageController implements Initializable {
+    @FXML
+    private AnchorPane AddPatient;
+    @FXML
+    private TableView<Patient> AddPatientTable;
 
     @FXML
     private TableView<Doctor> DoctorTableview;
@@ -33,16 +38,34 @@ public class ReceptionistHomePageController implements Initializable {
     private TextField DoctorfilterField;
 
     @FXML
-    private TableColumn<Doctor, String> doctorAddress;
+    private TableColumn<Patient, String> PatientDisease;
 
     @FXML
-    private TableColumn<Doctor, String> doctorDateOfbirth;
+    private TableColumn<Patient, String> PatientDoctorName;
+
+    @FXML
+    private TextField PatientFilterField;
+
+    @FXML
+    private TableColumn<Patient, String> PatientPhonenumber;
+
+    @FXML
+    private TableColumn<Patient, String> PatientUserName;
+
+    @FXML
+    private TextField addressField;
+
+    @FXML
+    private Button button_Update;
+
+    @FXML
+    private Button button_logout;
+
+    @FXML
+    private TextField dobField;
 
     @FXML
     private TableColumn<Doctor, String> doctorEduQualification;
-
-    @FXML
-    private TableColumn<Doctor, String> doctorEmail;
 
     @FXML
     private TableColumn<Doctor, String> doctorFullName;
@@ -54,26 +77,92 @@ public class ReceptionistHomePageController implements Initializable {
     private TableColumn<Doctor, String> doctorSpecialization;
 
     @FXML
-    private TableColumn<Doctor, Integer> doctorStatus;
-
-    @FXML
     private TableColumn<Doctor, String> doctorUserName;
 
-    public void initialize(URL url, ResourceBundle rb) {
-        // Initialize Doctor TableView columns
-        doctorFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        doctorUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-        doctorEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        doctorPhoneNum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        doctorDateOfbirth.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-        doctorSpecialization.setCellValueFactory(new PropertyValueFactory<>("specialization"));
-        doctorEduQualification.setCellValueFactory(new PropertyValueFactory<>("educationalQualification"));
-        doctorAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        doctorStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField passwordField;
+
+    @FXML
+    private TableColumn<Patient, String> patientEmail;
+
+    @FXML
+    private TableColumn<Patient, String> patientFullName;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private TextField usernameField;
+
+    private Connection connect=null;
+    private PreparedStatement prepare=null;
+    private ResultSet result =null;
+    AlertMessage alert = new AlertMessage();
+
+
+
+    public int getTotalCount(String tablename) {
+        int totalCount = 0;
+        try {
+            connect = HospitalManagementDatabase.connectDB();
+            prepare = connect.prepareStatement("SELECT COUNT(*) AS total FROM " + tablename);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                totalCount = result.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (result != null) {
+                    result.close();
+                }
+                if (prepare != null) {
+                    prepare.close();
+                }
+                if (connect != null) {
+                    connect.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return totalCount;
+    }
+
+
+
+    public  void SearchDoctor() {
         try {
             ObservableList<Doctor> Dlist;
-            Dlist =getDoctors();
+            Dlist = getDoctors();
             FilteredList<Doctor> filteredData = new FilteredList<>(Dlist, b -> true);
+            DoctorfilterField.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(Doctor -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (Doctor.getFullName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true;
+                    } else if (Doctor.getUserName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true;
+                    } else if (Doctor.getSpecialization().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
+            });
             SortedList<Doctor> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(DoctorTableview.comparatorProperty());
             DoctorTableview.setItems(sortedData);
@@ -81,6 +170,84 @@ public class ReceptionistHomePageController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public  void SearchPatient(){
+        try{
+            ObservableList<Patient> Plist=getPatients();
+            FilteredList<Patient> filteredData = new FilteredList<>(Plist, b -> true);
+            PatientFilterField.textProperty().addListener((observable,oldValue,newValue)->{
+                filteredData.setPredicate(Patient->{
+                    if(newValue==null || newValue.isEmpty()){
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if(Patient.getFullName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Patient.getUserName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else if(Patient.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                });
+
+            });
+            SortedList<Patient> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(AddPatientTable.comparatorProperty());
+            AddPatientTable.setItems(sortedData);
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+    public  void updatePatientTable()throws SQLException{
+        patientFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        PatientUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        patientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        PatientPhonenumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        PatientDisease.setCellValueFactory(new PropertyValueFactory<>("disease"));
+        PatientDoctorName.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        SearchPatient();
+    }
+
+
+
+
+        public void UpdateDoctorTable()throws SQLException{
+            doctorFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+            doctorUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+            doctorPhoneNum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+            doctorSpecialization.setCellValueFactory(new PropertyValueFactory<>("specialization"));
+            doctorEduQualification.setCellValueFactory(new PropertyValueFactory<>("educationalQualification"));
+            SearchDoctor();
+
+        }
+
+
+    public void initialize(URL url, ResourceBundle rb) {
+        try {
+            UpdateDoctorTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            updatePatientTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public ObservableList<Doctor> getDoctors() throws SQLException {
         ObservableList<Doctor> list = FXCollections.observableArrayList();
@@ -108,33 +275,30 @@ public class ReceptionistHomePageController implements Initializable {
         return list;
     }
 
-    @FXML
-    private TextField addressField;
+    public ObservableList<Patient>getPatients() throws SQLException{
+        ObservableList<Patient> Plist = FXCollections.observableArrayList();
+        try (Connection connect = HospitalManagementDatabase.connectDB();
+             PreparedStatement ps = connect.prepareStatement("SELECT * FROM patient");
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Plist.add(new Patient(
+                        rs.getString("fullname"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("phonenumber"),
+                        rs.getString("date_of_birth"),
+                        rs.getString("disease"),
+                        rs.getString("doctorname"),
+                        rs.getString("address")
 
-    @FXML
-    private Button button_Update;
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Plist;
+    }
 
-    @FXML
-    private TextField dobField;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField passwordField;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private TextField usernameField;
-
-    private Connection connect;
-    private PreparedStatement prepare;
-    private ResultSet result;
 
 
     public void setProfile(String user, String pass) throws SQLException {
@@ -194,8 +358,7 @@ public class ReceptionistHomePageController implements Initializable {
         }
     }
 
-    @FXML
-    private Button button_logout;
+
 
     @FXML
     protected void onlogOUTClick(ActionEvent event) throws IOException {
@@ -207,4 +370,31 @@ public class ReceptionistHomePageController implements Initializable {
         stage.show();
 
     }
+
+   public void AddPatient(ActionEvent event) {
+
+       Doctor doctor =DoctorTableview.getSelectionModel().getSelectedItem();
+       String doctorUsername=doctor.getUserName();
+       Patient patient =AddPatientTable.getSelectionModel().getSelectedItem();
+       String patienUsername =patient.getUserName();
+       int totrows=getTotalCount("doctorappointment");
+      // System.out.println(doctorUsername);
+       //System.out.println(patienUsername);
+       connect =HospitalManagementDatabase.connectDB();
+       String query = "insert into doctorappointment(serialno,doctorusername,patientusername)values(?,?,?)";
+
+       try{
+           prepare =connect.prepareStatement(query);
+           prepare.setInt(1,(totrows+1));
+           prepare.setString(2,doctorUsername);
+           prepare.setString(3,patienUsername);
+           prepare.execute();
+           alert.successMessage("Appointment successful");
+
+       }
+       catch (Exception e){
+           e.printStackTrace();
+       }
+   }
+
 }
