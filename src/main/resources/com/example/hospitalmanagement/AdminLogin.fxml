@@ -33,6 +33,11 @@
                </font>
             </Label>
                   <Hyperlink fx:id="hpreghere" layoutX="339.0" layoutY="400.0" onAction="#SwitchToRegisterform" text="Register Here" />
+            <Button fx:id="Go_Back" layoutX="525.0" layoutY="421.0" mnemonicParsing="false" onAction="#SwitchToMainHomePage" text="BACK">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
                </children>
             </AnchorPane>
 

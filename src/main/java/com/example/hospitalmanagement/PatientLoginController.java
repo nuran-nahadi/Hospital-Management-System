@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class PatientLoginController {
 
@@ -88,9 +90,13 @@ public class PatientLoginController {
 
 
     }
-    public void switchToPatientHomepage(ActionEvent event) throws IOException {
+    public void switchToPatientHomepage(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PatientHomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),743,480);
+        Parent root = fxmlLoader.load();
+        PatientHomePageController patientHomePageController = fxmlLoader.getController();
+        patientHomePageController.setProfile(txusername.getText(), passwordhidden.getText());
+
+        Scene scene = new Scene(root,1280,800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         //Stage stage= new Stage();
         stage.setTitle("Patient Homepage");
@@ -101,6 +107,19 @@ public class PatientLoginController {
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
         // FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterCommonforall.fxml"));
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("RegisterPatientPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),743, 480);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Hospital Management System");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+    @FXML
+    private Button Go_Back ;
+    public void SwitchToMainHomePage(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("HomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),743, 480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Hospital Management System");
