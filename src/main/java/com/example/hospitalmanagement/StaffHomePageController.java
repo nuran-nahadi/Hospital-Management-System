@@ -137,4 +137,13 @@ public class StaffHomePageController {
             e.printStackTrace();
         }
     }
+
+    public void giveAttendance(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Attendance");
+        alert.setHeaderText("Attendance");
+        alert.setContentText("Attendance Recorded Successfully");
+        alert.showAndWait();
+
+    }
 }

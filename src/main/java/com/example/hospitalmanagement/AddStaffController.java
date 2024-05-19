@@ -4,10 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,6 +47,23 @@ public class AddStaffController {
     private PreparedStatement prepare = null;
     private ResultSet result = null;
     AlertMessage alert = new AlertMessage();
+
+    @FXML
+    public void gotoHome(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to close this window");
+        //alert.setContentText("");
+
+        if (alert.showAndWait().get().equals(ButtonType.OK)) {
+            stage.close();
+        } else {
+            alert.close();
+
+        }
+    }
 
     public void updateStaffTable() {
         StaffFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));

@@ -28,7 +28,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button fx:id="button_attendance" layoutX="385.0" layoutY="520.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="210.0" style="-fx-background-color: #191970;" text="Register Attendance" textFill="WHITE">
+      <Button fx:id="button_attendance" layoutX="385.0" layoutY="520.0" mnemonicParsing="false" onAction="#giveAttendance" prefHeight="60.0" prefWidth="210.0" style="-fx-background-color: #191970;" text="Register Attendance" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>

@@ -303,6 +303,16 @@ public class AdminHomePageController implements Initializable {
         stage.show();
     }
 
+    public void gotoAddStaff(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(HospitalManagementSystem.class.getResource("AddStaff.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setTitle("Staff Queue");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void setProfile(String user, String pass) throws SQLException {
         try {
             connect = HospitalManagementDatabase.connectDB();

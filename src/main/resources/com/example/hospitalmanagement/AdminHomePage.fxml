@@ -130,12 +130,12 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Button layoutX="704.0" layoutY="61.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="122.0" text="ADD STAFF">
+                                <Button fx:id="bt_addstaff" layoutX="704.0" layoutY="61.0" mnemonicParsing="false" onAction="#gotoAddStaff" prefHeight="48.0" prefWidth="122.0" text="ADD STAFF">
                                     <font>
                                         <Font name="System Bold Italic" size="17.0" />
                                     </font>
                                 </Button>
-                                <Button layoutX="1084.0" layoutY="61.0" mnemonicParsing="false" onAction="#removeStaff" prefHeight="47.0" prefWidth="150.0" text="REMOVE STAFF">
+                                <Button fx:id="bt_remove" layoutX="1084.0" layoutY="61.0" mnemonicParsing="false" onAction="#removeStaff" prefHeight="47.0" prefWidth="150.0" text="REMOVE STAFF">
                                     <font>
                                         <Font name="System Bold Italic" size="17.0" />
                                     </font>

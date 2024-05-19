@@ -91,15 +91,16 @@ public class DoctorLoginController {
 
     public void switchToDoctorHomepage(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DoctorHomePage.fxml"));
-        Parent root = fxmlLoader.load();
+        //Parent root = fxmlLoader.load();
+        Scene scene = new Scene(fxmlLoader.load(),1280,800);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         DoctorHomepageController doctorHomepageController = fxmlLoader.getController();
         doctorHomepageController.setProfile(DoctorLoginUsername.getText(),DoctorPasswordHidden.getText());
         String docuser=DoctorLoginUsername.getText();
         doctorHomepageController.DoctorUsername=docuser;
 
         doctorHomepageController.setTab_overview();
-        Scene scene = new Scene(root,1280,800);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
         stage.setTitle("Doctor Homepage");
         stage.setScene(scene);
         stage.show();
@@ -121,8 +122,10 @@ public class DoctorLoginController {
 
     public void SwitchToRegisterform(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader =new FXMLLoader(HospitalManagementSystem.class.getResource("DoctorRegistration.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),400, 370);
+        Scene scene = new Scene(fxmlLoader.load(),1280, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(100);
+        stage.setY(0);
         stage.setTitle("Hospital Management System");
         stage.setScene(scene);
         stage.show();

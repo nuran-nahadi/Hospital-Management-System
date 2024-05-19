@@ -2,12 +2,13 @@ package com.example.hospitalmanagement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -45,6 +46,22 @@ public class AddReceptionistController implements Initializable {
     @FXML
     private TableColumn<Receptionist, String> receptionistUserName;
 
+    @FXML
+    public void gotoHome(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to close this window");
+        //alert.setContentText("");
+
+        if (alert.showAndWait().get().equals(ButtonType.OK)) {
+            stage.close();
+        } else {
+            alert.close();
+
+        }
+    }
     public void updateReceptionistTable()throws SQLException {
 
         receptionistFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
