@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.AdminHomePageController">
+    <children>
+        <TabPane layoutY="68.0" prefHeight="732.0" prefWidth="1280.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
+            <tabs>
+                <Tab fx:id="tab_overview" closable="false" text="Overview">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label alignment="CENTER" layoutX="263.0" layoutY="167.0" prefHeight="58.0" prefWidth="154.0" text="Total Patient">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                                <TextField fx:id="totalpatientcount" alignment="CENTER" layoutX="264.0" layoutY="264.0" prefHeight="87.0" prefWidth="154.0" text="0">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </TextField>
+                                <Label alignment="CENTER" layoutX="661.0" layoutY="167.0" prefHeight="55.0" prefWidth="147.0" text="Total Staff">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                                <Label alignment="CENTER" layoutX="459.0" layoutY="165.0" prefHeight="57.0" prefWidth="166.0" text="Total Doctor">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                                <Label alignment="CENTER" layoutX="861.0" layoutY="165.0" prefHeight="57.0" prefWidth="194.0" text="Total Receptionist">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                                <TextField fx:id="TotalDoctorCount" alignment="CENTER" layoutX="456.0" layoutY="264.0" prefHeight="87.0" prefWidth="154.0" text="0">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </TextField>
+                                <TextField fx:id="TotalStaffCount" alignment="CENTER" layoutX="663.0" layoutY="264.0" prefHeight="87.0" prefWidth="154.0" text="0">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </TextField>
+                                <TextField fx:id="TotalReceptionistCount" alignment="CENTER" layoutX="887.0" layoutY="264.0" prefHeight="87.0" prefWidth="154.0" text="0">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </TextField>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tab_doctors" closable="false" text="Doctors">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="715.0">
+                            <children>
+                                <Button fx:id="btAddDoctor" layoutX="396.0" layoutY="58.0" mnemonicParsing="false" onAction="#gotoAddDoctor" prefHeight="36.0" prefWidth="125.0" text="ADD DOCTOR">
+                                    <font>
+                                        <Font name="System Bold Italic" size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="btRemoveDoctor" layoutX="608.0" layoutY="56.0" mnemonicParsing="false" onAction="#removeDoctor" prefHeight="40.0" prefWidth="137.0" text="REMOVE DOCTOR">
+                                    <font>
+                                        <Font name="System Bold Italic" size="14.0" />
+                                    </font>
+                                </Button>
+                                <AnchorPane layoutX="-5.0" layoutY="454.0" prefHeight="176.0" prefWidth="418.0" />
+                                <AnchorPane layoutX="-2.0" layoutY="124.0" prefHeight="573.0" prefWidth="906.0">
+                                    <children>
+                                        <TableView fx:id="DoctorTableview" layoutX="2.0" layoutY="19.0" prefHeight="553.0" prefWidth="1271.0">
+                                            <columns>
+                                                <TableColumn fx:id="doctorFullName" prefWidth="184.80001521110535" text="Full Name" />
+                                                <TableColumn fx:id="doctorUserName" prefWidth="124.00001525878906" text="User Name" />
+                                                <TableColumn fx:id="doctorEmail" prefWidth="172.79998779296875" text="Email" />
+                                                <TableColumn fx:id="doctorPhoneNum" minWidth="0.0" prefWidth="154.4000244140625" text="Phone No." />
+                                                <TableColumn fx:id="doctorDateOfbirth" prefWidth="123.2000732421875" text="DATE of Birth" />
+                                                <TableColumn fx:id="doctorSpecialization" prefWidth="134.4000244140625" text="Specialization" />
+                                                <TableColumn fx:id="doctorEduQualification" prefWidth="171.199951171875" text="Edu. Qualifications" />
+                                                <TableColumn fx:id="doctorAddress" prefWidth="213.5999755859375" text="Address" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                                <Label layoutX="14.0" layoutY="99.0" text="Double Click on the record to change STATUS">
+                                    <font>
+                                        <Font size="22.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="22.0" layoutY="62.0" text="Search">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="DoctorfilterField" layoutX="88.0" layoutY="63.0" prefHeight="26.0" prefWidth="211.0" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tab_staff" closable="false" text="Staff">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="135.0" prefHeight="36.0" prefWidth="220.0" text="STAFF RECORDS">
+                                    <font>
+                                        <Font name="System Bold" size="23.0" />
+                                    </font>
+                                </Label>
+                                <TableView fx:id="StaffTableview" layoutX="2.0" layoutY="180.0" prefHeight="463.0" prefWidth="1280.0">
+                                    <columns>
+                                        <TableColumn fx:id="StaffFullName" prefWidth="185.6000428199768" text="Full Name" />
+                                        <TableColumn fx:id="StaffUserName" prefWidth="116.0" text="User Name" />
+                                        <TableColumn fx:id="StaffEmail" prefWidth="213.5999755859375" text="Email" />
+                                        <TableColumn fx:id="StaffPhoneNumber" prefWidth="202.4000244140625" text="Phone Number" />
+                                        <TableColumn fx:id="StaffDOB" prefWidth="206.4000244140625" text="Date of Birth" />
+                                        <TableColumn fx:id="StaffAddress" prefWidth="358.4000244140625" text="Address" />
+                                    </columns>
+                                </TableView>
+                                <Label layoutX="14.0" layoutY="100.0" prefHeight="34.0" prefWidth="498.0" text="Select a STAFF member by clicking">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="bt_addstaff" layoutX="704.0" layoutY="61.0" mnemonicParsing="false" onAction="#gotoAddStaff" prefHeight="48.0" prefWidth="122.0" text="ADD STAFF">
+                                    <font>
+                                        <Font name="System Bold Italic" size="17.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="bt_remove" layoutX="1084.0" layoutY="61.0" mnemonicParsing="false" onAction="#removeStaff" prefHeight="47.0" prefWidth="150.0" text="REMOVE STAFF">
+                                    <font>
+                                        <Font name="System Bold Italic" size="17.0" />
+                                    </font>
+                                </Button>
+                                <TextField fx:id="StafffilterField" layoutX="86.0" layoutY="48.0" prefHeight="26.0" prefWidth="211.0" />
+                                <Label layoutX="25.0" layoutY="47.0" text="Search">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tab_patient" closable="false" text="Patients">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="558.0" prefWidth="894.0">
+                            <children>
+                                <TableView fx:id="PatientTableview" layoutX="2.0" layoutY="111.0" prefHeight="542.0" prefWidth="1280.0">
+                                    <columns>
+                                        <TableColumn fx:id="patientFullName" prefWidth="190.40003061294556" text="Full Name" />
+                                        <TableColumn fx:id="patientUserName" prefWidth="110.4000244140625" text="User Name" />
+                                        <TableColumn fx:id="patientEmail" minWidth="0.0" prefWidth="166.39996337890625" text="Email" />
+                                        <TableColumn fx:id="patientphonenum" minWidth="4.79998779296875" prefWidth="174.4000244140625" text="Phone No." />
+                                        <TableColumn fx:id="patientDOB" prefWidth="184.0" text="Date of Birth" />
+                                        <TableColumn fx:id="patientDisease" minWidth="0.0" prefWidth="216.79998779296875" text="Disease" />
+                                        <TableColumn fx:id="patientDoctorName" prefWidth="248.7999267578125" text="Assigned to (Doctor)" />
+                                    </columns>
+                                </TableView>
+                                <Label layoutX="2.0" layoutY="70.0" text="PATIENT RECORDS">
+                                    <font>
+                                        <Font name="System Bold" size="22.0" />
+                                    </font>
+                                </Label>
+                                <Separator layoutY="67.0" prefHeight="0.0" prefWidth="894.0" />
+                                <TextField fx:id="PatientfilterField" layoutX="93.0" layoutY="30.0" prefHeight="26.0" prefWidth="211.0" />
+                                <Label layoutX="30.0" layoutY="30.0" text="Search">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tab_rooms" text="Receptionist">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="15.0" layoutY="100.0" text="Select a RECEPTIONIST by clicking">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <TableView fx:id="ReceptionistTableview" layoutX="-1.0" layoutY="179.0" prefHeight="562.0" prefWidth="1280.0">
+                                    <columns>
+                                        <TableColumn fx:id="receptionistFullName" prefWidth="238.4000152349472" text="Full Name" />
+                                        <TableColumn fx:id="receptionistUserName" prefWidth="134.39999389648438" text="User Name" />
+                                        <TableColumn fx:id="receptionistEmail" minWidth="0.0" prefWidth="216.79995727539062" text="Email" />
+                                        <TableColumn fx:id="receptionistPhonenum" minWidth="6.4000244140625" prefWidth="159.19998168945312" text="Phone No." />
+                                        <TableColumn fx:id="receptionistDOB" minWidth="4.800048828125" prefWidth="182.4000244140625" text="Date Of Birth" />
+                                        <TableColumn fx:id="receptionistAddress" minWidth="0.0" prefWidth="349.5999755859375" text="Address" />
+                                    </columns>
+                                </TableView>
+                                <Button fx:id="button_add" layoutX="671.0" layoutY="68.0" mnemonicParsing="false" onAction="#gotoAddReceptionist" text="ADD RECEPTIONIST">
+                                    <font>
+                                        <Font name="System Bold Italic" size="16.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="button_remove" layoutX="1029.0" layoutY="68.0" mnemonicParsing="false" onAction="#removeReceptionist" text="REMOVE RECEPTIONIST">
+                                    <font>
+                                        <Font name="System Bold Italic" size="16.0" />
+                                    </font>
+                                </Button>
+                                <TextField fx:id="ReceptionistfilterField" layoutX="79.0" layoutY="48.0" prefHeight="26.0" prefWidth="211.0" />
+                                <Label layoutX="14.0" layoutY="48.0" text="Search">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                        <Label layoutX="14.0" layoutY="118.0" prefHeight="58.0" prefWidth="294.0" text="RECEPTIONIST RECORDS">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                        </Label>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tab_personalinfo" closable="false" text="Profile">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="511.0" layoutY="222.0" prefHeight="20.0" prefWidth="46.0" text="Name:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="509.0" layoutY="296.0" prefHeight="20.0" prefWidth="96.0" text="Email:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="509.0" layoutY="337.0" prefHeight="20.0" prefWidth="103.0" text="Phone Number:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="509.0" layoutY="377.0" prefHeight="20.0" prefWidth="95.0" text="Date of Birth:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="509.0" layoutY="418.0" prefHeight="20.0" prefWidth="95.0" text="Gender:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="509.0" layoutY="458.0" prefHeight="20.0" prefWidth="95.0" text="Religion">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="509.0" layoutY="501.0" prefHeight="20.0" prefWidth="95.0" text="Address:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="511.0" layoutY="257.0" prefHeight="20.0" prefWidth="99.0" text="User Name:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="name" layoutX="612.0" layoutY="219.0" />
+                                <TextField fx:id="username" disable="true" editable="false" layoutX="612.0" layoutY="254.0">
+                                    <opaqueInsets>
+                                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                    </opaqueInsets>
+                                    <effect>
+                                        <Glow />
+                                    </effect>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font></TextField>
+                                <TextField fx:id="email" layoutX="612.0" layoutY="293.0" />
+                                <TextField fx:id="phonenumber" layoutX="612.0" layoutY="334.0" />
+                                <TextField fx:id="dob" layoutX="612.0" layoutY="374.0" />
+                                <TextField fx:id="gender" layoutX="612.0" layoutY="415.0" />
+                                <TextField fx:id="religion" layoutX="612.0" layoutY="455.0" />
+                                <TextField fx:id="address" layoutX="612.0" layoutY="498.0" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Label fx:id="label_admin" layoutX="1.0" layoutY="-1.0" prefHeight="68.0" prefWidth="1280.0" style="-fx-background-color: yellow;" text="                                                                                                Admin Panel">
+            <font>
+                <Font size="22.0" />
+            </font></Label>
+        <Button fx:id="button_logout" layoutX="1126.0" layoutY="-1.0" mnemonicParsing="false" onAction="#onlogOUTClick" prefHeight="68.0" prefWidth="153.0" style="-fx-background-color: #d40606;" text="Logout" textAlignment="CENTER" textFill="#f7f7f7">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+    </children>
+</AnchorPane>

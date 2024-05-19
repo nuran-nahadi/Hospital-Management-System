@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.ReceptionistRegistrationController">
+    <top>
+        <AnchorPane prefHeight="270.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+            <children>
+                <Label layoutX="282.0" layoutY="135.0" prefHeight="91.0" prefWidth="917.0" text="Please Provide the following Information to complete the registration process" textAlignment="JUSTIFY">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </top>
+    <bottom>
+        <AnchorPane prefHeight="503.0" prefWidth="639.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="420.0" layoutY="-23.0" text="Full Name">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="RegFullNametext" layoutX="591.0" layoutY="-24.0" prefHeight="32.0" prefWidth="270.0" promptText="Full Name" />
+                <Label layoutX="420.0" layoutY="27.0" text="User Name">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="419.0" layoutY="80.0" prefHeight="30.0" prefWidth="106.0" text="Password">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="421.0" layoutY="139.0" text="Email">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="421.0" layoutY="252.0" text="Date of Birth">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="421.0" layoutY="190.0" text="Phone Number">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="RegUsernameText" layoutX="591.0" layoutY="26.0" prefHeight="32.0" prefWidth="270.0" promptText="User Name" />
+                <PasswordField fx:id="RegPasswordText" layoutX="592.0" layoutY="80.0" prefHeight="30.0" prefWidth="268.0" promptText="Password" />
+                <TextField fx:id="RegEmailText" layoutX="593.0" layoutY="136.0" prefHeight="36.0" prefWidth="265.0" promptText="Email" />
+                <TextField fx:id="RegPnoneNumberText" layoutX="594.0" layoutY="188.0" prefHeight="36.0" prefWidth="263.0" promptText="Phone Number" />
+                <DatePicker fx:id="RegDateofBirth" layoutX="595.0" layoutY="250.0" prefHeight="34.0" prefWidth="260.0" promptText="Date of Birth" />
+                <Button fx:id="RegistrationButton" alignment="CENTER" layoutX="530.0" layoutY="333.0" mnemonicParsing="false" onAction="#registerAccount" prefHeight="40.0" prefWidth="226.0" text="Register">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+                <Label layoutX="546.0" layoutY="398.0" prefHeight="26.0" prefWidth="155.0" text="Already have an account?">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <Hyperlink layoutX="710.0" layoutY="398.0" onAction="#switchfromregistertologin" text="Log in">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Hyperlink>
+            </children>
+            <opaqueInsets>
+                <Insets bottom="343.0" left="434.0" right="43.0" top="34.0" />
+            </opaqueInsets>
+        </AnchorPane>
+    </bottom>
+</BorderPane>
