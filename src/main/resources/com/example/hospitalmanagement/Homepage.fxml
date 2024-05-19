@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="525.0" prefWidth="743.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.HomepageController">
+<AnchorPane prefHeight="525.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospitalmanagement.HomepageController">
       <children>
          <Button fx:id="btadmin" layoutX="29.0" layoutY="192.0" mnemonicParsing="false" onAction="#onAdminbuttonClick" style="-fx-background-color: #191970;" text="Admin" textFill="ALICEBLUE">
             <font>
@@ -22,7 +22,7 @@
                <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btreceiptionist" layoutX="416.0" layoutY="192.0" mnemonicParsing="false" onAction="#onRecieptionistbuttonClick" style="-fx-background-color: #191970;" text="Recieptionist" textFill="ALICEBLUE">
+         <Button fx:id="btreceiptionist" layoutX="416.0" layoutY="192.0" mnemonicParsing="false" onAction="#onRecieptionistbuttonClick" style="-fx-background-color: #191970;" text="Receptionist" textFill="ALICEBLUE">
             <font>
                <Font size="18.0" />
             </font>

@@ -94,6 +94,9 @@ public class DoctorLoginController {
         Parent root = fxmlLoader.load();
         DoctorHomepageController doctorHomepageController = fxmlLoader.getController();
         doctorHomepageController.setProfile(DoctorLoginUsername.getText(),DoctorPasswordHidden.getText());
+        String docuser=DoctorLoginUsername.getText();
+        doctorHomepageController.DoctorUsername=docuser;
+
         doctorHomepageController.setTab_overview();
         Scene scene = new Scene(root,743,480);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,17 +17,68 @@
             <tabs>
                 <Tab fx:id="tab_overview" closable="false" text="Overview">
                     <content>
-                        <AnchorPane />
+                        <AnchorPane>
+                     <children>
+                        <TextField layoutX="130.0" layoutY="127.0" prefHeight="114.0" prefWidth="157.0" />
+                        <TextField layoutX="444.0" layoutY="127.0" prefHeight="114.0" prefWidth="150.0" />
+                        <Label layoutX="130.0" layoutY="93.0" prefHeight="27.0" prefWidth="154.0" text="Appointed Patients">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="446.0" layoutY="93.0" prefHeight="27.0" prefWidth="146.0" text="Served Patients">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
                     </content>
                 </Tab>
                 <Tab fx:id="tab_patients" closable="false" text="Patients">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="PatientTableview1" layoutY="95.0" prefHeight="447.0" prefWidth="894.0">
+                           <columns>
+                              <TableColumn fx:id="patientFullName1" prefWidth="116.80001521110535" text="Full Name" />
+                              <TableColumn fx:id="patientUserName1" prefWidth="112.7999267578125" text="User Name" />
+                              <TableColumn fx:id="patientEmail1" minWidth="0.0" prefWidth="112.00001525878906" text="Email" />
+                              <TableColumn fx:id="patientphonenum1" minWidth="4.79998779296875" prefWidth="124.800048828125" text="Phone No." />
+                              <TableColumn fx:id="patientDOB1" prefWidth="140.00006103515625" text="Date of Birth" />
+                              <TableColumn fx:id="patientDisease1" minWidth="0.0" prefWidth="138.39996337890625" text="Disease" />
+                              <TableColumn fx:id="patientDoctorName1" prefWidth="144.80001220703127" text="Doctors Name" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="PatientfilterField1" layoutX="99.0" layoutY="39.0" prefHeight="26.0" prefWidth="211.0" />
+                        <Label layoutX="27.0" layoutY="35.0" prefHeight="27.0" prefWidth="54.0" text="Search">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
                     </content>
                 </Tab>
                 <Tab fx:id="tab_appointments" closable="false" text="Appointments">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="AppointmentTableView" layoutY="72.0" prefHeight="470.0" prefWidth="894.0">
+                           <columns>
+                              <TableColumn fx:id="patientFullName" prefWidth="116.80001521110535" text="Full Name" />
+                              <TableColumn fx:id="patientUserName" prefWidth="141.60000610351562" text="User Name" />
+                              <TableColumn fx:id="patientEmail" minWidth="0.0" prefWidth="115.20001220703125" text="Email" />
+                              <TableColumn fx:id="patientphonenum" minWidth="4.79998779296875" prefWidth="156.0" text="Phone No." />
+                              <TableColumn fx:id="patientDOB" prefWidth="196.00006103515625" text="Date of Birth" />
+                              <TableColumn fx:id="patientDisease" minWidth="0.0" prefWidth="163.9998779296875" text="Disease" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="PatientfilterField" layoutX="84.0" layoutY="29.0" prefHeight="26.0" prefWidth="211.0" />
+                        <Label layoutX="22.0" layoutY="29.0" prefHeight="27.0" prefWidth="61.0" text="Search">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
                     </content>
                 </Tab>
                 <Tab fx:id="tab_profile" closable="false" text="Profile">

@@ -377,17 +377,27 @@ public class ReceptionistHomePageController implements Initializable {
        String doctorUsername=doctor.getUserName();
        Patient patient =AddPatientTable.getSelectionModel().getSelectedItem();
        String patienUsername =patient.getUserName();
+       String patientFullname=patient.getFullName();
+       String patientphoneNumber=patient.getPhoneNumber();
+       String patientEmail=patient.getEmail();
+       String patientDob=patient.getDateOfBirth();
+       String patientDisease=patient.getDisease();
        int totrows=getTotalCount("doctorappointment");
       // System.out.println(doctorUsername);
        //System.out.println(patienUsername);
        connect =HospitalManagementDatabase.connectDB();
-       String query = "insert into doctorappointment(serialno,doctorusername,patientusername)values(?,?,?)";
+       String query = "insert into doctorappointment(serialno,doctorusername,patientusername,patientfullname,patientphonenumber,patientemail,patientdateofbirth,patientdisease)values(?,?,?,?,?,?,?,?)";
 
        try{
            prepare =connect.prepareStatement(query);
            prepare.setInt(1,(totrows+1));
            prepare.setString(2,doctorUsername);
            prepare.setString(3,patienUsername);
+           prepare.setString(4,patientFullname);
+           prepare.setString(5,patientphoneNumber);
+           prepare.setString(6,patientEmail);
+           prepare.setString(7,patientDob);
+           prepare.setString(8,patientDisease);
            prepare.execute();
            alert.successMessage("Appointment successful");
 
