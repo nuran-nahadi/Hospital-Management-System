@@ -23,6 +23,15 @@ public class Patient {
         this.address = address;
     }
 
+    public Patient(String fullName,String userName,String email,String phoneNumber,String dateOfBirth,String disease){
+        this.fullName=fullName;
+        this.userName=userName;
+        this.email=email;
+        this.phoneNumber=phoneNumber;
+        this.dateOfBirth=dateOfBirth;
+        this.disease=disease;
+    }
+
     // Getter and setter methods for each field
     public String getFullName() {
         return fullName;
