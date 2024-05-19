@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class DoctorLoginController {
 
     @FXML
@@ -96,8 +97,6 @@ public class DoctorLoginController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         DoctorHomepageController doctorHomepageController = fxmlLoader.getController();
         doctorHomepageController.setProfile(DoctorLoginUsername.getText(),DoctorPasswordHidden.getText());
-        String docuser=DoctorLoginUsername.getText();
-        doctorHomepageController.DoctorUsername=docuser;
 
         doctorHomepageController.setTab_overview();
 
