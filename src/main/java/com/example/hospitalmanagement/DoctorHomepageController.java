@@ -176,19 +176,20 @@ public class DoctorHomepageController implements Initializable {
 
     public void updateInfo(ActionEvent event) {
         try {
-            String insertData = "UPDATE doctor SET fullname = ?, username = ?, email = ?, phonenumber = ?, date_of_birth = ?, address = ?, specializationField = ? , eduQualificationField = ? , password = ? WHERE username = ?";
+
+            String insertData = "UPDATE doctor SET fullname = ?, email = ?, phonenumber = ?, date_of_birth = ?, address = ?, specialization = ? , educationalqualification = ? , password = ? WHERE username = ?";
             connect = HospitalManagementDatabase.connectDB();
             prepare = connect.prepareStatement(insertData);
             prepare.setString(1, nameField.getText());
-            prepare.setString(2, usernameField.getText());
-            prepare.setString(3, emailField.getText());
-            prepare.setString(4, phoneField.getText());
-            prepare.setString(5, dobField.getText());
-            prepare.setString(6, addressField.getText());
-            prepare.setString(7, passwordField.getText());
-            prepare.setString(8, specializationField.getText());
-            prepare.setString(9, eduQualificationField.getText());
-            prepare.setString(10, usernameField.getText());
+            //prepare.setString(2, usernameField.getText());
+            prepare.setString(2, emailField.getText());
+            prepare.setString(3, phoneField.getText());
+            prepare.setString(4, dobField.getText());
+            prepare.setString(5, addressField.getText());
+            prepare.setString(6, passwordField.getText());
+            prepare.setString(7, specializationField.getText());
+            prepare.setString(8, eduQualificationField.getText());
+            prepare.setString(9, usernameField.getText());
 
             prepare.executeUpdate();
             AlertMessage alert = new AlertMessage();
@@ -284,7 +285,8 @@ public class DoctorHomepageController implements Initializable {
         try {
             System.out.println(DoctorUsername);
             connect = HospitalManagementDatabase.connectDB();
-             PreparedStatement ps = connect.prepareStatement("SELECT * FROM doctorappointment WHERE doctorusername=doctorusername");
+             PreparedStatement ps = connect.prepareStatement("SELECT * FROM doctorappointment WHERE doctorusername=?");
+             ps.setString(1,DoctorUsername);
              ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Plist.add(new Patient(
