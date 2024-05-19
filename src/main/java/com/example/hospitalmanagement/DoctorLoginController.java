@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class DoctorLoginController {
 
     @FXML
@@ -94,8 +95,6 @@ public class DoctorLoginController {
         Parent root = fxmlLoader.load();
         DoctorHomepageController doctorHomepageController = fxmlLoader.getController();
         doctorHomepageController.setProfile(DoctorLoginUsername.getText(),DoctorPasswordHidden.getText());
-        String docuser=DoctorLoginUsername.getText();
-        doctorHomepageController.DoctorUsername=docuser;
 
         doctorHomepageController.setTab_overview();
         Scene scene = new Scene(root,743,480);
