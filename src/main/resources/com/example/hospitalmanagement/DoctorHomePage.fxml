@@ -19,8 +19,14 @@
                     <content>
                         <AnchorPane>
                      <children>
-                        <TextField layoutX="130.0" layoutY="127.0" prefHeight="114.0" prefWidth="157.0" />
-                        <TextField layoutX="444.0" layoutY="127.0" prefHeight="114.0" prefWidth="150.0" />
+                        <TextField fx:id="totalAppointment" alignment="CENTER" editable="false" layoutX="130.0" layoutY="127.0" prefHeight="114.0" prefWidth="157.0">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font></TextField>
+                        <TextField fx:id="totalServed" alignment="CENTER" editable="false" layoutX="444.0" layoutY="127.0" prefHeight="114.0" prefWidth="150.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font></TextField>
                         <Label layoutX="130.0" layoutY="93.0" prefHeight="27.0" prefWidth="154.0" text="Appointed Patients">
                            <font>
                               <Font size="18.0" />

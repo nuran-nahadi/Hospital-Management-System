@@ -24,20 +24,17 @@ import java.util.ResourceBundle;
 
 public class DoctorHomepageController implements Initializable {
 
-
-
     @FXML
     private TableView<Patient> AppointmentTableView;
+
+    @FXML
+    private TableView<Patient> PatientTableview1;
 
     @FXML
     private TextField PatientfilterField;
 
     @FXML
     private TextField PatientfilterField1;
-
-
-    @FXML
-    private TableView<Patient> PatientTableview1;
 
     @FXML
     private TextField addressField;
@@ -124,23 +121,44 @@ public class DoctorHomepageController implements Initializable {
     private Tab tab_profile;
 
     @FXML
-    private TextField usernameField;
+    private TextField totalAppointment;
 
+    @FXML
+    private TextField totalServed;
+
+    @FXML
+    private TextField usernameField;
 
 
     private Connection connect=null;
     private PreparedStatement prepare=null;
     private ResultSet result=null;
-    public String DoctorUsername;
 
 
-
+    public void setTotalAppointments(){
+        try{
+            connect = HospitalManagementDatabase.connectDB();
+            PreparedStatement ps = connect.prepareStatement("SELECT COUNT(*) FROM doctorappointment WHERE doctorusername = ?");
+            ps.setString(1,usernameField.getText());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                totalAppointment.setText(rs.getString("COUNT(*)"));
+                totalServed.setText(rs.getString("COUNT(*)"));
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
     public void setTab_overview() {
+
+
     }
 
 
     public void setProfile(String user, String pass) throws SQLException {
         try {
+            setTotalAppointments();
             connect = HospitalManagementDatabase.connectDB();
             prepare = connect.prepareStatement("SELECT * FROM doctor WHERE username = ? AND password = ?");
             prepare.setString(1, user);
@@ -243,7 +261,6 @@ public class DoctorHomepageController implements Initializable {
             SortedList<Patient> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(AppointmentTableView.comparatorProperty());
             AppointmentTableView.setItems(sortedData);
-
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -283,10 +300,10 @@ public class DoctorHomepageController implements Initializable {
     public ObservableList<Patient>getPatients() throws SQLException{
         ObservableList<Patient> Plist = FXCollections.observableArrayList();
         try {
-            System.out.println(DoctorUsername);
+            System.out.println(usernameField.getText());
             connect = HospitalManagementDatabase.connectDB();
              PreparedStatement ps = connect.prepareStatement("SELECT * FROM doctorappointment WHERE doctorusername=?");
-             ps.setString(1,DoctorUsername);
+             ps.setString(1,usernameField.getText());
              ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Plist.add(new Patient(
